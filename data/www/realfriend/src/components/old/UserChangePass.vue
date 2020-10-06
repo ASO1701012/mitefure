@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import http from "../../static/axios/axios"
+  import http from "../../../static/axios/axios"
 
   export default {
     name: "UserChangePass",

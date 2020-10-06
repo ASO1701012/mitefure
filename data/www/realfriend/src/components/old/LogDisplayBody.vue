@@ -8,7 +8,7 @@
 
 <script>
   import InformationList from "@/components/LogDisplayList"
-  import http from "../../static/axios/axios"
+  import http from "../../../static/axios/axios"
   import ReturnMenu from "@/components/ReturnMenu"
 
     export default {

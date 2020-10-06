@@ -24,7 +24,7 @@
   import UserChangePass from "@/components/UserChangePass"
   import LogOut from "@/components/LogOut"
   import ReturnMenu from "@/components/ReturnMenu"
-  import http from "../../static/axios/axios"
+  import http from "../../../static/axios/axios"
 
   export default {
     name: "UserProfile",

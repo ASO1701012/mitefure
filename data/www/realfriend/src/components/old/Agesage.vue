@@ -2,9 +2,9 @@
   <div class="agesage">
     <!--lamdba側から送られてくる好感判定で判断する。 -->
     <!--数値に変更があったので反映してます -->
-    <img v-show="agesageData>0" src="../assets/smile.png">
-    <img v-show="agesageData==0" src="../assets/normal.png">
-    <img v-show="agesageData<0" src="../assets/shock.png">
+    <img v-show="agesageData>0" src="../../assets/smile.png">
+    <img v-show="agesageData==0" src="../../assets/normal.png">
+    <img v-show="agesageData<0" src="../../assets/shock.png">
   </div>
 </template>
 
