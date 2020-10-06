@@ -33,7 +33,7 @@
 <script>
     import FriendEdit from "@/components/FriendEdit"
     import FriendDelete from "@/components/FriendDelete"
-    import http from "../../static/axios/axios"
+    import http from "../../../static/axios/axios"
 
     export default {
         name: "FriendList",
