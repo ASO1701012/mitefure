@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueAnalytics from 'vue-analytics'
+
+
 // import HelloWorld from '@/components/HelloWorld'
 // import Main from '@/components/Main'
 // import GameBody from "@/components/GameBody"
@@ -74,6 +77,10 @@ const router = new Router({
 //     next('/login')
 //   }
 // })
+Vue.use(VueAnalytics, {
+  id: 'UA-179947358-1',
+  router
+})
 
 export default router
 
