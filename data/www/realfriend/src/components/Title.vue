@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img v-bind:src="logoImageSrc">
+    <img src="/static/reallogo.png">
     <h2>REAL FRIEND</h2>
   </div>
 </template>
@@ -11,7 +11,7 @@
     name: "Title",
     data() {
       return {
-        logoImageSrc: require("@/assets/realogo.png"),
+
       }
     },
   }
