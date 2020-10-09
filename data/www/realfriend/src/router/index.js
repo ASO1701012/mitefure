@@ -13,12 +13,18 @@ import VueAnalytics from 'vue-analytics'
 // import store from "@/store"
 // import Menu from "@/components/Menu"
 // import Opening from "@/components/Opening"
+import Title from "@/components/Title"
 
 
 Vue.use(Router)
 
 const router = new Router({
   routes: [
+    {
+      path: '/',
+      name: 'Title',
+      component: Title
+    },
     // {
     //   path: '/game/:friendId',
     //   name: 'GameBody',
