@@ -7,13 +7,15 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import BootstrapVue from 'bootstrap-vue'
 import store from './store'
+import Vuetify from 'vuetify'
 
 
 Vue.config.productionTip = false
-Vue.use(VueAxios, Axios, BootstrapVue)
+Vue.use(VueAxios, Axios, BootstrapVue,Vuetify)
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vuetify/dist/vuetify.min.css'
 
 
 /* eslint-disable no-new */

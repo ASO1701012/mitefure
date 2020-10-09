@@ -1,9 +1,16 @@
 <template>
+  <v-app>
   <div id="app">
+    <b-btn>button1</b-btn>
+    <b-button>test1</b-button>
     <transition mode="out-in">
+      <v-btn elevation="2">button</v-btn>
+      <b-btn>button1</b-btn>
+      <b-button>test1</b-button>
       <router-view/>
     </transition>
   </div>
+  </v-app>
 </template>
 
 <script>
