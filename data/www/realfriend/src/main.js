@@ -10,12 +10,14 @@ import store from './store'
 import Vuetify from 'vuetify'
 
 
-Vue.config.productionTip = false
-Vue.use(VueAxios, Axios, BootstrapVue,Vuetify)
-
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vuetify/dist/vuetify.min.css'
+
+
+Vue.config.productionTip = false
+Vue.use(VueAxios, Axios, BootstrapVue,Vuetify)
+
 
 
 /* eslint-disable no-new */

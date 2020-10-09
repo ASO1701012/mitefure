@@ -1,7 +1,12 @@
 <template>
   <div>
-    <img src="/static/reallogo.png">
-    <h2>REAL FRIEND</h2>
+    <div>
+      <img src="/static/reallogo.png">
+      <h2>REAL FRIEND</h2>
+    </div>
+    <v-app>
+      <button class="v-btn">test</button>
+    </v-app>
   </div>
 </template>
 

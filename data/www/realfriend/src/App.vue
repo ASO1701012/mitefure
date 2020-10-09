@@ -1,14 +1,7 @@
 <template>
   <v-app>
   <div id="app">
-    <b-btn>button1</b-btn>
-    <b-button>test1</b-button>
-    <transition mode="out-in">
-      <v-btn elevation="2">button</v-btn>
-      <b-btn>button1</b-btn>
-      <b-button>test1</b-button>
-      <router-view/>
-    </transition>
+    <router-view/>
   </div>
   </v-app>
 </template>
@@ -63,22 +56,5 @@
     text-align: center;
     color: #2c3e50;
     background-image: url("assets/log.png");
-  }
-  .v-enter {
-    transform: translate(0, 0);
-  }
-  .v-enter-to {
-  }
-  .v-enter-active {
-    transition: all 1s 0s ease;
-  }
-  .v-leave {
-    transform: translate(0, 0);
-  }
-  .v-leave-to {
-    transform: translate(100%, 0);
-  }
-  .v-leave-active {
-    transition: all .5s 0s ease;
   }
 </style>
