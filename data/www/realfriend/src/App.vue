@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <transition mode="out-in">
-      <router-view/>
-    </transition>
+<!--    <transition mode="out-in">-->
+<!--      <router-view/>-->
+<!--    </transition>-->
+    <SnsShareButton></SnsShareButton>
   </div>
 </template>
 
 <script>
     import http from "../static/axios/axios"
+    import SnsShareButton from "./components/SnsShareButton"
 
     export default {
         name: 'App',
-        // beforeCreate() {
+      components: {SnsShareButton},
+      // beforeCreate() {
         //     //vueインスタンス生成時
         //     this.$store.dispatch("token/localStorageLoad")
         // },
