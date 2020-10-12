@@ -11,8 +11,12 @@
         type="text"
       ></NormalTextBox>
 
-      <NormalButton class="buttonInput" v-on:click="test">{{buttonText}}</NormalButton>
-      <NormalTextArea>{{textData}}</NormalTextArea>
+      <NormalButton class="buttonInput" v-on:click="test">診断</NormalButton>
+      <NormalTextArea>
+        説明文：（例）このアプリは相手の表情や声などをもとにその人の感情を調べ、
+        あなたと話しているときの反応を調べ好感度を表示するアプリです。
+        友達や気になるあの人と気軽に診断してみよう!
+      </NormalTextArea>
     </div>
   </div>
 </template>
@@ -27,8 +31,6 @@
     components: {NormalTextBox: NormalTextBox, NormalTextArea: NormalTextArea, NormalButton: NormalButton},
     data() {
       return {
-        textData: '説明文：（例）このアプリは相手の表情や声などをもとにその人の感情を調べ、あなたと話しているときの反応を調べ好感度を表示するアプリです。友達や気になるあの人と気軽に診断してみよう',
-        buttonText: '診断',
         getTextBoxText: '',
       }
     },

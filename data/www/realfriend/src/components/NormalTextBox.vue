@@ -20,8 +20,8 @@
       placeholder: {type: String, required: false}
     },
     methods: {
-      updateValue: function(e) {
-        this.$emit("input", e.target.value);
+      updateValue(e) {
+        this.$emit("input", e.target.value)
       }
     }
   }
