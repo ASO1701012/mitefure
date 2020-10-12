@@ -37,7 +37,8 @@
     methods: {
       test() {
         if (this.getTextBoxText != '') {
-          alert(this.getTextBoxText)
+          this.$store.dispatch('Friend/nameSet',this.getTextBoxText)
+          alert(this.$store.getters['Friend/nameGet'])
         }
       }
     },
