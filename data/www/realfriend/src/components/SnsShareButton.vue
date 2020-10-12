@@ -6,11 +6,13 @@
       </a>
     </div>
     <div class="icon_list">
+      //InstagramにはTwitterのような共有機能がないようなので公式Instagramを乗せようと考えています
       <a href="#">
         <img src="../../static/discord_icon.svg" alt="読み込み失敗">
       </a>
     </div>
     <div class="icon_list">
+      //Discordの共有機能を探すことができなかったのでサーバーの招待URLを埋め込もうと考えています
       <a href="#">
         <img src="../../static/instagram_icon.svg" alt="読み込み失敗">
       </a>
