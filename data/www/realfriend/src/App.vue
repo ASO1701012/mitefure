@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div id="app">
-      <router-view/>
+      <!--    <router-view/>-->
     </div>
   </v-app>
 </template>
@@ -10,7 +10,7 @@
 
 export default {
   name: 'App',
-  components: {},
+  components: ,
   // beforeCreate() {
   //     //vueインスタンス生成時
   //     this.$store.dispatch("token/localStorageLoad")
