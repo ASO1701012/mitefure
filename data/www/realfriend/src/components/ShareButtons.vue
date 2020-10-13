@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import TwitterShareButton from "./TwitterShareButton";
-import InstagramShareButton from "./InstagramShareButton";
-import DiscordShareButton from "./DiscordShareButton";
+import TwitterShareButton from "./TwitterShareButton"
+import InstagramShareButton from "./InstagramShareButton"
+import DiscordShareButton from "./DiscordShareButton"
 
 export default {
   name: "ShareButtons",
