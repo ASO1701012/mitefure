@@ -14,6 +14,8 @@ import VueAnalytics from 'vue-analytics'
 // import Menu from "@/components/Menu"
 // import Opening from "@/components/Opening"
 import Title from "@/components/Title"
+import Test from "@/components/Test"
+import NormalTextArea from "@/components/NormalTextArea"
 
 
 Vue.use(Router)
@@ -24,6 +26,16 @@ const router = new Router({
       path: '/',
       name: 'Title',
       component: Title
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
+    },
+    {
+      path: '/normaltextarea',
+      name: 'NormalTextArea',
+      component: NormalTextArea
     },
     // {
     //   path: '/game/:friendId',
