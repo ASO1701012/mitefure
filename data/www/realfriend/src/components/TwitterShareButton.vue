@@ -8,7 +8,7 @@
 
 <script>
 export default {
-name: "TwitterShareButton"
+  name: "TwitterShareButton"
 }
 </script>
 
