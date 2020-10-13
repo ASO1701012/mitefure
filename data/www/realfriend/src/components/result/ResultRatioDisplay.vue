@@ -1,10 +1,15 @@
 <template>
-  <p>{{result}}</p>
+  <p>{{ result }}</p>
 </template>
 
 <script>
 export default {
   name: "ResultRatioDisplay",
+  // data() {
+  //   return {
+  //     result: 10
+  //   }
+  // }
   props:{
     result:{
       type:Number

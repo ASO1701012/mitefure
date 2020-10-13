@@ -1,6 +1,6 @@
 <template>
   <div>
-  <img src="/static/heart.svg" alt="表示失敗" class="heart">
+    <img src="/static/heart.svg" alt="表示失敗" class="heart">
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped>
-.heart{
+.heart {
   width: 50px;
 }
 
