@@ -15,7 +15,9 @@ export default {
   },
   actions: {
     nameSet: ({commit}, value) => {
-      commit('nameSet', value)
+      setTimeout(() => {
+        commit('nameSet', value)
+      }, 100)
     },
   }
 }
