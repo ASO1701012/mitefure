@@ -7,7 +7,7 @@ export default {
   name: "ResultRatioDisplay",
   props:{
     result:{
-      type:String
+      type:Number
     }
   }
 }
