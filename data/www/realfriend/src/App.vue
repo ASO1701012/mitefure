@@ -10,7 +10,7 @@
 
 export default {
   name: 'App',
-  components: {ShareButtons},
+  components: ,
   // beforeCreate() {
   //     //vueインスタンス生成時
   //     this.$store.dispatch("token/localStorageLoad")
