@@ -9,14 +9,14 @@ export default {
     },
   },
   mutations: {
-    nameSet:(state,value) =>{
-      state.friendName = value
+    nameSet:(state,payload) =>{
+      state.friendName = payload
     }
   },
   actions: {
-    nameSet: ({commit}, value) => {
+    nameSet: ({commit}, payload) => {
       setTimeout(() => {
-        commit('nameSet', value)
+        commit('nameSet', payload)
       }, 100)
     },
   }
