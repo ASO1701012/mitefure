@@ -5,10 +5,6 @@
 <script>
 export default {
   name: "ResultRatioDisplay",
-  data() {
-    return {
-    }
-  },
   computed: {
     result: function () {
       return this.$store.getters["Favo/getFavoJudge1"]
