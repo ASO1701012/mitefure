@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Favo from "./modules/Favo"
 
-
-import Friend from "./modules/Friend"
 Vue.use(Vuex)
+
+import Favo from "./modules/Favo"
+import Friend from "./modules/Friend"
 
 export default new Vuex.Store({
   modules: {
