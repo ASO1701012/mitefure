@@ -1,7 +1,7 @@
 <template>
   <div>
     <ReturnButton/>
-    <ResultRatioDisplay :result="number"/>
+    <ResultRatioDisplay/>
     <ResultHeart/>
     <ResultTextArea/>
     <ShareButtons/>
@@ -18,11 +18,6 @@ import ResultTextArea from "./ResultTextArea"
 export default {
   name: "Result",
   components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons,  ReturnButton},
-  data () {
-    return {
-      number:10
-    }
-  }
 }
 </script>
 
