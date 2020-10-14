@@ -10,7 +10,6 @@
 
 export default {
   name: 'App',
-  components: ,
   // beforeCreate() {
   //     //vueインスタンス生成時
   //     this.$store.dispatch("token/localStorageLoad")
