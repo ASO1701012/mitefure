@@ -2,7 +2,7 @@
   <div>
     <ReturnButton/>
     <ResultRatioDisplay :point="Point"/>
-    <ResultHeart/>
+    <ResultHeart :point = "Point"/>
     <ResultTextArea :text="Text"/>
     <ShareButtons/>
   </div>
@@ -25,9 +25,7 @@ export default {
     }
   },
   methods () {
-    return{
-
-    }
+    //ここにテキスト生成の処理をかく？ここかStore
   },
   created() {
     this.Point = this.$store.getters['Favo/getEmotionPoint']

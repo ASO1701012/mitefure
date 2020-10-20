@@ -6,7 +6,16 @@
 
 <script>
 export default {
-  name: "ResultHeart"
+  name: "ResultHeart",
+  // data(){
+  //   return{
+  //     Point:0
+  //   }
+  // },
+  props:['Point'],
+  methods:{
+    //ここに渡された値によってハートのCSSを変更する処理を書く
+  }
 }
 </script>
 
