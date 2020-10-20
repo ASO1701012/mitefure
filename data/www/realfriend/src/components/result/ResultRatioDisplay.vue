@@ -1,17 +1,19 @@
 <template>
-  <p>{{result}}%</p>
+  <p>{{ Point }}%</p>
 </template>
 
 <script>
 export default {
   name: "ResultRatioDisplay",
-  computed: {
-    result: function () {
-      return this.$store.getters["Favo/getFavoJudge1"]
-        +this.$store.getters["Favo/getFavoJudge2"]
-        +this.$store.getters["Favo/getFavoJudge3"]
-    }
-  }
+
+  props: ['Point']
+  // computed: {
+  //   result: function () {
+  //     return this.$store.getters["Favo/getFavoJudge1"]
+  //       +this.$store.getters["Favo/getFavoJudge2"]
+  //       +this.$store.getters["Favo/getFavoJudge3"]
+  //   }
+  // }
 }
 </script>
 

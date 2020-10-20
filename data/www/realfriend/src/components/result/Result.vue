@@ -1,9 +1,9 @@
 <template>
   <div>
     <ReturnButton/>
-    <ResultRatioDisplay/>
+    <ResultRatioDisplay :point="Point"/>
     <ResultHeart/>
-    <ResultTextArea/>
+    <ResultTextArea :text="Text"/>
     <ShareButtons/>
   </div>
 </template>
@@ -18,6 +18,21 @@ import ResultTextArea from "./ResultTextArea"
 export default {
   name: "Result",
   components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons,  ReturnButton},
+  data() {
+    return{
+      Point: 0,
+      Text: "",
+    }
+  },
+  methods () {
+    return{
+
+    }
+  },
+  created() {
+    this.Point = this.$store.getters['Favo/getEmotionPoint']
+    this.Text = this.$store.getters['Favo/getEmotionTxt']
+  }
 }
 </script>
 
