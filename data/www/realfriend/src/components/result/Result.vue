@@ -2,8 +2,8 @@
   <div>
     <ReturnButton/>
     <ResultRatioDisplay :point="Point"/>
-    <ResultHeart :point = "Point"/>
-    <ResultTextArea :text="Text"/>
+    <ResultHeart :point="Point"/>
+    <ResultTextArea :point="Point"/>
     <ShareButtons/>
   </div>
 </template>
@@ -17,19 +17,18 @@ import ResultTextArea from "./ResultTextArea"
 
 export default {
   name: "Result",
-  components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons,  ReturnButton},
+  components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons, ReturnButton},
   data() {
-    return{
+    return {
       Point: 0,
-      Text: "",
+      // Text: "",
     }
   },
-  methods () {
-    //ここにテキスト生成の処理をかく？ここかStore
+  methods() {
+
   },
   created() {
     this.Point = this.$store.getters['Favo/getEmotionPoint']
-    this.Text = this.$store.getters['Favo/getEmotionTxt']
   }
 }
 </script>
