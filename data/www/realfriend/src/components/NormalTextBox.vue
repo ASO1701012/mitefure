@@ -1,5 +1,4 @@
 <template>
-  <div>
     <input
       :type="type"
       :name="name"
@@ -7,7 +6,6 @@
       :placeholder="placeholder"
       @input="updateValue"
     />
-  </div>
 </template>
 
 <script>
