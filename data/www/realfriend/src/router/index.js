@@ -14,7 +14,7 @@ import VueAnalytics from 'vue-analytics'
 // import Menu from "@/components/Menu"
 // import Opening from "@/components/Opening"
 import Title from "@/components/Title"
-import Result from "../components/Result";
+import Result from "@/components/Result"
 
 
 Vue.use(Router)
