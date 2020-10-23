@@ -3,6 +3,7 @@
     <video ref="video" id="video" width="500" height="500" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
     <canvas ref="canvas" id="canvas" hidden></canvas>
+    <button v-on:click="videoStart">カメラ起動</button>
   </div>
 </template>
 
@@ -35,7 +36,23 @@
                 })
             },
             capture(){
-
+                //カメラが写っている範囲を指定し、その領域を画像として切り取る
+                this.canvas = this.$refs.canvas
+                this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
+                //画像データをbase64にエンコード
+                this.image = this.canvas.toDataURL("image/jpeg")
+                this.image = this.image.substr(23)
+            },
+            videoStart() {
+                this.video = this.$refs.video
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
+                        this.video.srcObject = stream
+                        this.video.play()
+                    })
+                } else {
+                    console.log("getUserMedia not support")
+                }
             }
         }
 
