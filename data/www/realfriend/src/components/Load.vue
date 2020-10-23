@@ -23,6 +23,10 @@ export default {
 .loading-style{
   /*縦並びでの表示*/
   writing-mode: vertical-rl;
+  /*中央ぞろえ*/
+  margin: 0 auto;
+  /*文字の大きさ*/
+  font-size: xx-large;
 }
 
 
