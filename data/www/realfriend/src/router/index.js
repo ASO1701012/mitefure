@@ -31,7 +31,7 @@ const router = new Router({
       path: '/result',
       name: '結果',
       component: Result
-    }
+    },
     {
       path:'/load',
       name:'Load',
