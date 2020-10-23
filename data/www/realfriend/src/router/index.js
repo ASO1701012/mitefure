@@ -14,6 +14,7 @@ import VueAnalytics from 'vue-analytics'
 // import Menu from "@/components/Menu"
 // import Opening from "@/components/Opening"
 import Title from "@/components/Title"
+import Result from "@/components/Result"
 
 
 Vue.use(Router)
@@ -25,6 +26,11 @@ const router = new Router({
       name: 'Title',
       component: Title
     },
+    {
+      path: '/result',
+      name: '結果',
+      component: Result
+    }
     // {
     //   path: '/game/:friendId',
     //   name: 'GameBody',
