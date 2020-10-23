@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="/static/reallogo.png" style="">
+    <img src="/static/reallogo.png">
     <h2>REAL FRIEND</h2>
     <div class="container mx-auto container-style">
       <form class="form-inline form-style">
@@ -20,7 +20,7 @@
 
 
       <NormalTextArea class="text-wrap text-area-style">
-        説明文：（例）このアプリは相手の表情や声などをもとにその人の感情を調べ、
+        説明文：このアプリは相手の表情や声などをもとにその人の感情を調べ、
         あなたと話しているときの反応を調べ好感度を表示するアプリです。
         友達や気になるあの人と気軽に診断してみよう!
       </NormalTextArea>
