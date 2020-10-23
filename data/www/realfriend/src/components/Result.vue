@@ -1,9 +1,9 @@
 <template>
   <div>
     <ReturnButton/>
-    <ResultRatioDisplay :point="Point"/>
-    <ResultHeart :point="Point"/>
-    <ResultTextArea :point="Point"/>
+    <ResultRatioDisplay :point="point"/>
+    <ResultHeart :point="point"/>
+    <ResultTextArea :point="point"/>
     <ShareButtons/>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons, ReturnButton},
   data() {
     return {
-      Point: 0,
+      point: 0,
       // Text: "",
     }
   },
@@ -28,7 +28,7 @@ export default {
 
   },
   created() {
-    this.Point = this.$store.getters['Favo/getEmotionPoint']
+    this.point = this.$store.getters['Favo/getEmotionPoint']
   }
 }
 </script>

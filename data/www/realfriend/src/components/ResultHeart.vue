@@ -13,8 +13,8 @@
       <defs>
         <linearGradient id="icon2" gradientTransform="rotate(90)">
           <stop offset="0%" stop-color="#ffffff"/>
-          <stop :offset=HeartPoint stop-color="#ffffff" /> <!-- stop-colorで内部の色の変更ができます。このstopタグをうまく使うとグラデーションを作ることもできます。 -->
-          <stop :offset=HeartPoint stop-color="#e83929" />
+          <stop :offset=heartPoint stop-color="#ffffff" /> <!-- stop-colorで内部の色の変更ができます。このstopタグをうまく使うとグラデーションを作ることもできます。 -->
+          <stop :offset=heartPoint stop-color="#e83929" />
           <stop offset="100%" stop-color="#e83929"/>
         </linearGradient>
       </defs>
@@ -27,14 +27,29 @@ export default {
   name: "ResultHeart",
   data(){
     return{
-      HeartPoint:100-(this.Point)+"%",
+      heartPoint:100-(this.point)+"%",
     }
   },
-  props: ['Point'],
+  props: ['point'],
 }
 </script>
 
 <style scoped>
+  path{
+    animation: hello 3s ease-in forwards;
+  }
+ @keyframes hello {
+    0% {
+      stroke-dashoffset: 2000;
+      /*fill: transparent; !*透過*!*/
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      /*fill: #333;*/
+      opacity: 1;
+    }
+  }
 
 
 

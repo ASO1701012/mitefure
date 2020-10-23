@@ -1,11 +1,11 @@
 <template>
-  <p>{{ Point }}%</p>
+  <p>{{ point }}%</p>
 </template>
 
 <script>
 export default {
   name: "ResultRatioDisplay",
-  props: ['Point']
+  props: ['point']
 }
 </script>
 

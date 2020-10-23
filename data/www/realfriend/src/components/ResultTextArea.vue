@@ -10,11 +10,11 @@
 <script>
 export default {
   name: "TextArea",
-  props:['Point'],
+  props:['point'],
   data() {
     return {
       resultText: "",
-      tmpText:this.Point
+      tmpText:this.point
     }
   },
   created() {
