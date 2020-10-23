@@ -14,6 +14,7 @@ import VueAnalytics from 'vue-analytics'
 // import Menu from "@/components/Menu"
 // import Opening from "@/components/Opening"
 import Title from "@/components/Title"
+import Load from "@/components/Load"
 
 
 Vue.use(Router)
@@ -24,6 +25,11 @@ const router = new Router({
       path: '/',
       name: 'Title',
       component: Title
+    },
+    {
+      path:'/load',
+      name:'Load',
+      component: Load
     },
     // {
     //   path: '/game/:friendId',
