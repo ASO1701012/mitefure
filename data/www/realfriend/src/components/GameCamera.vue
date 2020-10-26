@@ -8,6 +8,7 @@
 </template>
 
 <script>
+
     export default {
         name: "GameCamera",
         data() {
@@ -26,6 +27,7 @@
         },
         methods: {
             faceApi() {
+                let me = this
                 //faceApiに顔データを送信
                 this.axios.post(this.postUrl, {
                     image: String(this.image),
@@ -33,7 +35,7 @@
                     console.log(response.status)
                     if (response.status == 200) {
                         console.log(response)
-                        console.log(response.data.anger+"アンガー")
+                        me.$store.dispatch("Favo/addEmotions", response.data)
                     } else {
                         console.log(response)
                     }
