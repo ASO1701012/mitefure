@@ -46,7 +46,7 @@ export default {
   .button-position{
     position: absolute;
     bottom: 5%;
-    right: 0;
+    right: 5%;
   }
 }
 .return-position{
