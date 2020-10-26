@@ -15,6 +15,6 @@ export default {
 <style scoped>
 .return-img {
   transform: rotate(-90deg);
-  width: 50px;
+  width: 30px;
 }
 </style>
