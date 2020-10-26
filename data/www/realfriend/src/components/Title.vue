@@ -3,7 +3,7 @@
     <img src="/static/reallogo.png">
     <h2>REAL FRIEND</h2>
     <div class="container mx-auto container-style">
-      <form class="form-inline form-style">
+      <div class="form-inline form-style">
 
       <NormalTextBox
         v-model="getTextBoxText"
@@ -15,7 +15,7 @@
 
       <NormalButton class="buttonInput btn btn-outline-secondary" v-on:click="test">診断</NormalButton>
 
-      </form>
+      </div>
     </div>
 
 
