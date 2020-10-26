@@ -3,7 +3,6 @@
     <video ref="video" id="video" width="500" height="500" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
     <canvas ref="canvas" id="canvas" width="500" height="500" hidden></canvas>
-    <button v-on:click="videoStart">カメラ起動</button>
   </div>
 </template>
 
@@ -28,6 +27,7 @@
         methods: {
             faceApi() {
                 let me = this
+                
                 //faceApiに顔データを送信
                 this.axios.post(this.postUrl, {
                     image: String(this.image),
@@ -79,6 +79,7 @@
             videoStop() {
                 console.log("ストップ")
                 this.video.srcObject.getTracks().forEach(track => track.stop())
+                this.$router.push('/result')
             }
         }
 
