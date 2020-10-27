@@ -1,6 +1,6 @@
 <template>
   <div>
-    <video ref="video" id="video" width="500" height="500" autoplay muted></video>
+    <video ref="video" id="video" width="500" height="500" autoplay playsinline="true" muted></video>
     <!--    canvasを表示しないようにする-->
     <canvas ref="canvas" id="canvas" width="500" height="500" hidden></canvas>
   </div>
