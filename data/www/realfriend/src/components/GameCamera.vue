@@ -27,7 +27,7 @@
         methods: {
             faceApi() {
                 let me = this
-                
+
                 //faceApiに顔データを送信
                 this.axios.post(this.postUrl, {
                     image: String(this.image),
@@ -70,6 +70,7 @@
                     })
                 } else {
                     console.log("getUserMedia not support")
+                    alert("カメラに対応していません")
                 }
             },
             captureStop() {
