@@ -3,15 +3,14 @@
     <img src="/static/reallogo.png">
     <h2>REAL FRIEND</h2>
     <div class="container mx-auto container-style">
-      <div class="form-inline form-style">
+      <div class="d-inline input-style">
 
       <NormalTextBox
         v-model="getTextBoxText"
         placeholder="相手の名前を入れてね"
         name="textBoxInput"
         type="text"
-        class="form-control"
-      ></NormalTextBox>
+        class="text-style border border-dark"      ></NormalTextBox>
 
       <NormalButton class="buttonInput btn btn-outline-secondary" v-on:click="test">診断</NormalButton>
 
@@ -56,9 +55,6 @@
 .container-style{
   width: 100%;padding-top: 5%
 }
-.form-style{
-  display: inline-block;width: 100%
-}
 .text-area-style{
   margin: auto;padding-top: 5%;line-height: 2em;
 }
@@ -68,7 +64,7 @@
   .text-wrap{
     width: 100%;
   }
-  .form-control{
+  .text-style{
     width: 50%;
     display: inline-block;
   }
