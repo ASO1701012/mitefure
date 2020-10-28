@@ -12,26 +12,26 @@
         type="text"
         class="text-style border border-dark"      ></NormalTextBox>
 
-      <NormalButton class="buttonInput btn btn-outline-secondary" v-on:click="test">診断</NormalButton>
+        <NormalButton class="buttonInput btn btn-outline-secondary" v-on:click="start">診断</NormalButton>
 
       </div>
     </div>
 
 
       <NormalTextArea class="text-wrap text-area-style">
-        説明文：このアプリは相手の表情や声などをもとにその人の感情を調べ、
+        説明文：このアプリは相手の表情もとにその人の感情を調べ、
         あなたと話しているときの反応を調べ好感度を表示するアプリです。
-        友達や気になるあの人と気軽に診断してみよう!
+        友達や気になるあの人を気軽に診断してみよう!
       </NormalTextArea>
   </div>
 </template>
 
 <script>
-  import NormalTextArea from "./NormalTextArea"
-  import NormalTextBox from "./NormalTextBox"
-  import NormalButton from "./NormalButton"
+    import NormalTextArea from "./NormalTextArea"
+    import NormalTextBox from "./NormalTextBox"
+    import NormalButton from "./NormalButton"
 
-  export default {
+    export default {
     name: "Title",
     components: {NormalTextBox: NormalTextBox, NormalTextArea: NormalTextArea, NormalButton: NormalButton},
     data() {
@@ -40,11 +40,13 @@
       }
     },
     methods: {
-      test() {
-        if (this.getTextBoxText != '') {
-          this.$store.dispatch('Friend/nameSet',this.getTextBoxText)
-          alert(this.$store.getters['Friend/nameGet'])
-        }
+        start() {
+            if (this.getTextBoxText != '') {
+                this.$store.dispatch('Friend/nameSet', this.getTextBoxText)
+                this.$router.push('/game')
+            } else {
+                alert('名前を入力してください！')
+            }
       }
     },
   }
