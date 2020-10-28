@@ -17,6 +17,8 @@
                 canvas: {},  //canvas領域
                 timer: null, //インターバル用のタイマー
 
+                count: 0,  //シャッター用のカウント
+
                 postUrl: 'https://abwp9ub4n8.execute-api.ap-northeast-1.amazonaws.com/realfriend/emotion',
             }
         },
@@ -45,13 +47,16 @@
             },
             capture(){
                 console.log("captureに入りました")
-                //カメラが写っている範囲を指定し、その領域を画像として切り取る
-                this.canvas = this.$refs.canvas
-                this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
-                //画像データをbase64にエンコード
-                this.image = this.canvas.toDataURL("image/jpeg")
-                this.image = this.image.substr(23)
-                this.faceApi()
+                if(this.count<4){
+                    //カメラが写っている範囲を指定し、その領域を画像として切り取る
+                    this.canvas = this.$refs.canvas
+                    this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
+                    //画像データをbase64にエンコード
+                    this.image = this.canvas.toDataURL("image/jpeg")
+                    this.image = this.image.substr(23)
+                    this.faceApi()
+                    this.count++
+                }
             },
             videoStart() {
                 this.video = this.$refs.video
@@ -59,7 +64,6 @@
                     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
                         this.video.srcObject = stream
                         this.video.play()
-
 
                         this.timer =setInterval(this.capture, 3000)
 
