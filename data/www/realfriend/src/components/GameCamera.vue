@@ -1,8 +1,9 @@
 <template>
   <div>
-    <video ref="video" id="video" width="500" height="500" autoplay muted></video>
+    <video style="display: none;" ref="video" id="video" width="500" height="500" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
-    <canvas ref="canvas" id="canvas" width="500" height="500" hidden></canvas>
+    <canvas id="canvas-video" width="500" height="500"></canvas>
+    <canvas ref="canvas" id="canvas" width="500" height="500"></canvas>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
                 video: {},   //streamを保持させる
                 canvas: {},  //canvas領域
                 timer: null, //インターバル用のタイマー
+              video_timer:null,//canvas-video用のインターバルタイマー
 
                 postUrl: 'https://abwp9ub4n8.execute-api.ap-northeast-1.amazonaws.com/realfriend/emotion',
             }
@@ -49,18 +51,25 @@
                 this.canvas = this.$refs.canvas
                 this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
                 //画像データをbase64にエンコード
-                this.image = this.canvas.toDataURL("image/jpeg")
-                this.image = this.image.substr(23)
-                this.faceApi()
+                // this.image = this.canvas.toDataURL("image/jpeg")
+                // this.image = this.image.substr(23)
+                //this.faceApi()
             },
+          computeFrame() {
+            this.video = document.getElementById("video");
+            this.c1 = document.getElementById("canvas-video");
+            this.ctx1 = this.c1.getContext("2d");
+            this.ctx1.drawImage(this.video, 0, 0, 640, 480)
+          },
             videoStart() {
                 this.video = this.$refs.video
-                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+              if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
                         this.video.srcObject = stream
                         this.video.play()
 
 
+                      this.video_timer=setInterval(this.computeFrame,16)
                         this.timer =setInterval(this.capture, 3000)
 
                         //14秒後に撮影を終了する
@@ -75,6 +84,7 @@
             },
             captureStop() {
                 clearInterval(this.timer)
+              clearInterval(this.video_timer)
                 this.$router.push('/load')
             },
             videoStop() {
