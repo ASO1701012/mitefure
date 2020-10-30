@@ -28,6 +28,8 @@
                 '/static/twitter_icon.svg'
               ],
 
+                count: 0,  //シャッター用のカウント
+
                 postUrl: 'https://abwp9ub4n8.execute-api.ap-northeast-1.amazonaws.com/realfriend/emotion',
             }
         },
@@ -47,6 +49,7 @@
                     if (response.status == 200) {
                         console.log(response)
                         me.$store.dispatch("Favo/addEmotions", response.data)
+                        me.$store.dispatch("Favo/setMaxEmotion", response.data)
                     } else {
                         console.log(response)
                     }
@@ -56,20 +59,21 @@
             },
             capture(){
                 console.log("captureに入りました")
-                //カメラが写っている範囲を指定し、その領域を画像として切り取る
-                this.canvas = this.$refs.canvas
-                this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
-                //画像データをbase64にエンコード
-                // this.image = this.canvas.toDataURL("image/jpeg")
-                // this.image = this.image.substr(23)
-                //this.faceApi()
-              this.video = document.getElementById("video");
-              this.c1 = document.getElementById("canvas-effect");
-              this.ctx1 = this.c1.getContext("2d");
-              this.roseImage.src = this.landscapeImagePath[0];
-              this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
-
-
+                if(this.count<4){
+                    //カメラが写っている範囲を指定し、その領域を画像として切り取る
+                    this.canvas = this.$refs.canvas
+                    this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
+                    //画像データをbase64にエンコード
+                    this.image = this.canvas.toDataURL("image/jpeg")
+                    this.image = this.image.substr(23)
+                    this.faceApi()
+                  this.video = document.getElementById("video");
+                  this.c1 = document.getElementById("canvas-effect");
+                  this.ctx1 = this.c1.getContext("2d");
+                  this.roseImage.src = this.landscapeImagePath[0];
+                  this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
+                    this.count++
+                }
             },
           computeFrame() {
             this.video = document.getElementById("video");
