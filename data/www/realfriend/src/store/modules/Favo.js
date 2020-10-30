@@ -10,6 +10,15 @@ export default {
     neutral: 0,//平常
     sadness: 0,//悲しみ
     surprise: 0,//驚き
+
+    maxEmotion: null    //anger: 0
+                        // contempt: 1
+                        // disgust: 2
+                        // fear: 3
+                        // happiness: 4
+                        // neutral: 5
+                        // sadness: 6
+                        // surprise: 7
   },
   getters:{
     getEmotionPoint: state => {
@@ -39,6 +48,9 @@ export default {
     getSurprise: state => {
       return state.surprise
     },
+    getMaxEmotion: state => {
+      return state.maxEmotion
+    }
   },
   mutations: {
     addEmotions(state, payload) {
@@ -50,6 +62,15 @@ export default {
       state.neutral += payload.neutral
       state.sadness += payload.sadness
       state.surprise += payload.surprise
+    },
+    setMaxEmotion(state, payload) {
+      let x = Object.values(payload)
+
+      //try文を書くべきかも
+      //数値が最大のキーを取得
+      state.maxEmotion = x.indexOf(x.reduce(function (a, b) {
+        return Math.max(a, b)
+      }))
     }
   },
   actions: {
@@ -61,6 +82,15 @@ export default {
         }, 50)
       }))
     },
+    setMaxEmotion: ({commit}, payload) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('setMaxEmotion', payload)
+          resolve()
+        }, 50)
+      }))
+    }
+
   }
 
 }

@@ -38,6 +38,7 @@
                     if (response.status == 200) {
                         console.log(response)
                         me.$store.dispatch("Favo/addEmotions", response.data)
+                        me.$store.dispatch("Favo/setMaxEmotion", response.data)
                     } else {
                         console.log(response)
                     }
