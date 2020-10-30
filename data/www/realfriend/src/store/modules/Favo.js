@@ -10,6 +10,7 @@ export default {
     neutral: 0,//平常
     sadness: 0,//悲しみ
     surprise: 0,//驚き
+    emotionText: "もうこりごりだよぉ～～～～～～～～～～～～～"
   },
   getters:{
     getEmotionPoint: state => {
@@ -39,6 +40,9 @@ export default {
     getSurprise: state => {
       return state.surprise
     },
+    getEmotionText: state => {
+      return state.emotionText
+    }
   },
   mutations: {
     addEmotions(state, payload) {
