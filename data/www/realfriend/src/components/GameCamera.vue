@@ -38,6 +38,18 @@
                     if (response.status == 200) {
                         console.log(response)
                         me.$store.dispatch("Favo/addEmotions", response.data)
+                        me.$store.dispatch("Favo/setMaxEmotion", response.data)
+                        // let x = Object.values(response.data)
+                        // console.log(x)
+                        // console.log(x.reduce(function (a, b) {
+                        //     return Math.max(a, b)
+                        // }))
+                        // console.log(x.indexOf(x.reduce(function (a, b) {
+                        //     return Math.max(a, b)
+                        // })))
+                        // // var arr = [3,5,10,30,33,1,6];
+                        // //
+                        // // alert( arr.indexOf(Math.max.apply(null,arr) ); //=> 4
                     } else {
                         console.log(response)
                     }
