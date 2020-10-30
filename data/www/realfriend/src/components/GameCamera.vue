@@ -2,8 +2,11 @@
   <div>
     <video style="display: none;" ref="video" id="video" width="500" height="500" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
+    <div>
     <canvas id="canvas-video" width="500" height="500"></canvas>
-    <canvas ref="canvas" id="canvas" width="500" height="500"></canvas>
+    <canvas id="canvas-effect" width="500" height="500"></canvas>
+    </div>
+    <canvas ref="canvas" id="canvas" width="500" height="500" hidden></canvas>
   </div>
 </template>
 
@@ -18,6 +21,12 @@
                 canvas: {},  //canvas領域
                 timer: null, //インターバル用のタイマー
               video_timer:null,//canvas-video用のインターバルタイマー
+              roseImage:new Image,
+              landscapeImagePath : [
+                '/static/ダウンロード.png',
+                '/static/instagram_icon.svg',
+                '/static/twitter_icon.svg'
+              ],
 
                 postUrl: 'https://abwp9ub4n8.execute-api.ap-northeast-1.amazonaws.com/realfriend/emotion',
             }
@@ -54,12 +63,21 @@
                 // this.image = this.canvas.toDataURL("image/jpeg")
                 // this.image = this.image.substr(23)
                 //this.faceApi()
+              this.video = document.getElementById("video");
+              this.c1 = document.getElementById("canvas-effect");
+              this.ctx1 = this.c1.getContext("2d");
+              this.roseImage.src = this.landscapeImagePath[0];
+              this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
+
+
             },
           computeFrame() {
             this.video = document.getElementById("video");
             this.c1 = document.getElementById("canvas-video");
             this.ctx1 = this.c1.getContext("2d");
+            this.roseImage.src = this.landscapeImagePath[0];
             this.ctx1.drawImage(this.video, 0, 0, 640, 480)
+
           },
             videoStart() {
                 this.video = this.$refs.video
@@ -98,5 +116,10 @@
 </script>
 
 <style scoped>
+
+canvas { position: absolute; }
+#canvas-effect { z-index: 2; }
+#canvas-video { z-index: 1; }
+
 
 </style>
