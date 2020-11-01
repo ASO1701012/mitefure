@@ -25,6 +25,11 @@
               landscapeImagePath : [
                 '/static/ダウンロード.png',
                 '/static/instagram_icon.svg',
+                '/static/消しゴム.png',
+                '/static/enpitu.png',
+                '/static/heart.svg',
+                '/static/twitter_icon.svg',
+                '/static/realloge.png',
                 '/static/twitter_icon.svg'
               ],
 
@@ -67,11 +72,6 @@
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
                     this.faceApi()
-                  this.video = document.getElementById("video");
-                  this.c1 = document.getElementById("canvas-effect");
-                  this.ctx1 = this.c1.getContext("2d");
-                  this.roseImage.src = this.landscapeImagePath[0];
-                  this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
                     this.count++
                 }
             },
@@ -79,8 +79,18 @@
             this.video = document.getElementById("video");
             this.c1 = document.getElementById("canvas-video");
             this.ctx1 = this.c1.getContext("2d");
-            this.roseImage.src = this.landscapeImagePath[0];
             this.ctx1.drawImage(this.video, 0, 0, 640, 480)
+            this.video = document.getElementById("video");
+            this.c1 = document.getElementById("canvas-effect");
+            this.ctx1 = this.c1.getContext("2d");
+            this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            let i=this.$store.getters["Favo/getMaxEmotion"]
+            this.roseImage.src = this.landscapeImagePath[i];
+            console.log(i)
+            console.log(this.landscapeImagePath[i])
+            console.log(this.roseImage)
+            console.log(this.roseImage.src)
+            this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
 
           },
             videoStart() {
