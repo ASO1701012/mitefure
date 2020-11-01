@@ -23,14 +23,14 @@
               video_timer:null,//canvas-video用のインターバルタイマー
               roseImage:new Image,
               landscapeImagePath : [
-                '/static/ダウンロード.png',
-                '/static/instagram_icon.svg',
-                '/static/消しゴム.png',
-                '/static/enpitu.png',
-                '/static/heart.svg',
-                '/static/twitter_icon.svg',
-                '/static/realloge.png',
-                '/static/twitter_icon.svg'
+                '/static/angry.png',
+                '/static/bad.png',
+                '/static/bad.png',
+                '/static/fear.png',
+                '/static/happy.png',
+                '',
+                '/static/sad.png',
+                '/static/surpri.png'
               ],
 
                 count: 0,  //シャッター用のカウント
