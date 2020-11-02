@@ -1,7 +1,7 @@
 export default {
   namespaced: true,  //モジュールを名前空間に分ける
   state: {
-    emotionPoint: 80,  //合計点
+    emotionPoint: 0,  //合計点
     anger: 0,//怒り
     contempt: 0,//軽蔑
     disgust: 0,//嫌悪
@@ -10,10 +10,11 @@ export default {
     neutral: 0,//平常
     sadness: 0,//悲しみ
     surprise: 0,//驚き
+    resultText: ''
   },
-  getters:{
+  getters: {
     getEmotionPoint: state => {
-      return state.emotionPoint
+      return state.emotionPoint * 100
     },
     getAnger: state => {
       return state.anger
@@ -39,6 +40,24 @@ export default {
     getSurprise: state => {
       return state.surprise
     },
+    getGoodEmotions: state => {
+      return [
+        ['happiness', state.happiness],
+        ['surprise', state.surprise]
+      ]
+    },
+    getBadEmotions: state => {
+      return [
+        ['anger', state.anger],
+        ['contempt', state.contempt],
+        ['disgust', state.disgust],
+        ['fear', state.fear],
+        ['sadness', state.sadness],
+      ]
+    },
+    getResultText: state => {
+      return state.resultText
+    }
   },
   mutations: {
     addEmotions(state, payload) {
@@ -50,6 +69,12 @@ export default {
       state.neutral += payload.neutral
       state.sadness += payload.sadness
       state.surprise += payload.surprise
+    },
+    changeEmotionPoint(state, payload) {
+      state.emotionPoint = payload
+    },
+    changeResultText(state, payload) {
+      state.resultText = payload
     }
   },
   actions: {
@@ -61,6 +86,21 @@ export default {
         }, 50)
       }))
     },
+    changeEmotionPoint: ({commit}, payload) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('changeEmotionPoint', payload)
+          resolve()
+        }, 50)
+      }))
+    },
+    changeResultText: ({commit}, payload) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('changeResultText', payload)
+          resolve()
+        }, 50)
+      }))
+    }
   }
-
 }
