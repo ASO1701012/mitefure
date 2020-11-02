@@ -10,8 +10,7 @@ export default {
     neutral: 0,//平常
     sadness: 0,//悲しみ
     surprise: 0,//驚き
-    resultText: ''
-
+    resultText: '',
     maxEmotion: null    //anger: 0
                         // contempt: 1
                         // disgust: 2
@@ -66,7 +65,7 @@ export default {
     },
     getResultText: state => {
       return state.resultText
-    }
+    },
     getMaxEmotion: state => {
       return state.maxEmotion
     }
@@ -122,7 +121,7 @@ export default {
           resolve()
         }, 50)
       }))
-    }
+    },
     setMaxEmotion: ({commit}, payload) => {
       return new Promise(((resolve, reject) => {
         setTimeout(() => {
