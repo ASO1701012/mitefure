@@ -2,9 +2,9 @@
   <div>
     <video style="display: none;" ref="video" id="video" width="500" height="500" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
-    <div>
-    <canvas id="canvas-video" width="500" height="500"></canvas>
-    <canvas id="canvas-effect" width="500" height="500"></canvas>
+    <div class="wrapper">
+    <canvas id="canvas-video" width="700" height="500"></canvas>
+    <canvas id="canvas-effect" width="700" height="500"></canvas>
     </div>
     <canvas ref="canvas" id="canvas" width="500" height="500" hidden></canvas>
   </div>
@@ -71,7 +71,7 @@
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    this.faceApi()
+                    //this.faceApi()
                     this.count++
                 }
             },
@@ -80,34 +80,42 @@
             this.c1 = document.getElementById("canvas-video");
             this.ctx1 = this.c1.getContext("2d");
             this.ctx1.drawImage(this.video, 0, 0, 640, 480)
-            this.video = document.getElementById("video");
+            //エフェクト描写始まり（あとでwatchでstoreを監視する方式に変えるべき？）
             this.c1 = document.getElementById("canvas-effect");
             this.ctx1 = this.c1.getContext("2d");
             this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height);
             let i=this.$store.getters["Favo/getMaxEmotion"]
-            this.roseImage.src = this.landscapeImagePath[i];
-            console.log(i)
-            console.log(this.landscapeImagePath[i])
-            console.log(this.roseImage)
-            console.log(this.roseImage.src)
+            //エフェクトのサイズ確認用に入れている。
+            this.roseImage.src = this.landscapeImagePath[1];
+            //エフェクト描写処理終わり
             this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
 
           },
-            videoStart() {
+          canvas_resize(){
+              //canvasとdrawImageを全画面表示する
+              let theCanvas = document.getElementById('canvas');
+              let windowInnerWidth=window.innerWidth;
+              let windowInnerHeight=window.innerHeight;
+              console.log(windowInnerHeight)
+              theCanvas.setAttribute('width',windowInnerWidth);
+              theCanvas.setAttribute('height',windowInnerHeight);
+              },
+          videoStart() {
                 this.video = this.$refs.video
               if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
-                        this.video.srcObject = stream
+                      this.video.srcObject = stream
                         this.video.play()
+                      this.canvas_resize()
 
 
                       this.video_timer=setInterval(this.computeFrame,16)
                         this.timer =setInterval(this.capture, 3000)
 
                         //14秒後に撮影を終了する
-                        setTimeout(this.captureStop, 14000)
+                        //setTimeout(this.captureStop, 14000)
                         //20秒後にカメラを停止する
-                        setTimeout(this.videoStop, 20000)
+                        //setTimeout(this.videoStop, 20000)
                     })
                 } else {
                     console.log("getUserMedia not support")
@@ -134,6 +142,9 @@
 canvas { position: absolute; }
 #canvas-effect { z-index: 2; }
 #canvas-video { z-index: 1; }
-
+.wrapper{
+  width: 100%;
+  height: 100%;
+}
 
 </style>
