@@ -1,6 +1,6 @@
-import Axios from "axios"
-import Store from "../../src/store"
-import router from "../../src/router"
+import Axios from "old/axios/axios"
+import Store from "../../data/www/realfriend/src/store"
+import router from "../../data/www/realfriend/src/router"
 
 const http = Axios.create({
   // withCredentials: true
