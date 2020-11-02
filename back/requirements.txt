@@ -1,5 +1,0 @@
-Django==3
-djangorestframework
-django-filter
-psycopg2
-psycopg2-binary
