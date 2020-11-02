@@ -1,10 +1,10 @@
 <template>
   <div>
-    <ReturnButton/>
-    <ResultRatioDisplay :point="point"/>
-    <ResultHeart :point="point"/>
+    <ReturnButton class="return-position"/>
+    <ResultRatioDisplay class="rario-position" :point="point"/>
+    <ResultHeart class="heart-position" :point="point"/>
     <ResultTextArea :resultText="resultText"/>
-    <ShareButtons/>
+    <ShareButtons class="button-position"/>
   </div>
 </template>
 
@@ -32,5 +32,35 @@
 </script>
 
 <style scoped>
+@media screen and (max-width: 480px) {
+  .button-position{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+  }
+}
+/*スマホサイズでない場合に反映される*/
+@media screen and (min-width: 481px) {
+  .button-position{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+  }
+}
+.return-position{
+  float:left;
+  position: absolute;
+}
+.rario-position{
+  font-size: x-large;
+}
+.heart-position{
 
+}
+.text-position{
+  margin: auto;padding-top: 5%;line-height: 2em;
+}
+.button-position{
+  float: right;
+}
 </style>
