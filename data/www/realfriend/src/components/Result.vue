@@ -1,7 +1,7 @@
 <template>
   <div>
     <ReturnButton class="return-position"/>
-    <ResultRatioDisplay class="rario-position" :point="point"/>
+    <ResultRatioDisplay class="ratio-position" :point="point"/>
     <ResultHeart class="heart-position" :point="point"/>
     <ResultTextArea class="text-position" :point="point"/>
     <ShareButtons class="button-position"/>
@@ -53,7 +53,7 @@ export default {
   float:left;
   position: absolute;
 }
-.rario-position{
+.ratio-position{
   font-size: x-large;
 }
 .heart-position{
