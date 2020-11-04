@@ -14,7 +14,30 @@
 
 <script>
 export default {
-  name: "Load.vue"
+  name: "Load.vue",
+  created() {
+    window.addEventListener("beforeunload", this.confirmSave)
+  },
+  destroyed() {
+    window.removeEventListener("beforeunload", this.confirmSave)
+  },
+  beforeRouteLeave (to, from, next) {
+    if (to.name === "Result"){
+      next()
+    }else{
+      let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
+      if (answer) {
+        next()
+      } else {
+        next(false)
+      }
+    }
+  },
+  methods:{
+    confirmSave(event){
+      event.returnValue = "本当に遷移してもよろしいですか？"
+    }
+  },
 }
 </script>
 
