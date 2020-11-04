@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GameCamera><GameCamera>
+    <GameCamera></GameCamera>
     <GameStatus></GameStatus>
   </div>
 </template>
