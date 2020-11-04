@@ -3,10 +3,10 @@
     <video style="display: none;" ref="video" id="video" width="500" height="500" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
     <div class="wrapper">
-    <canvas id="canvas-video" width="700" height="500"></canvas>
-    <canvas id="canvas-effect" width="700" height="500"></canvas>
+    <canvas id="canvas-video" width="500" height="500"></canvas>
+    <canvas id="canvas-effect" width="500" height="500"></canvas>
     </div>
-    <canvas ref="canvas" id="canvas" width="500" height="500" hidden></canvas>
+    <canvas ref="canvas" id="canvas-capture" width="500" height="500" hidden></canvas>
   </div>
 </template>
 
@@ -31,7 +31,7 @@
                 '',
                 '/static/sad.png',
                 '/static/surpri.png'
-              ],
+              ],//display用のエフェクト
 
                 count: 0,  //シャッター用のカウント
 
@@ -66,8 +66,9 @@
                 console.log("captureに入りました")
                 if(this.count<4){
                     //カメラが写っている範囲を指定し、その領域を画像として切り取る
-                    this.canvas = this.$refs.canvas
-                    this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
+                  this.canvas = document.getElementById("canvas-capture");
+                  this.canvas_resize(this.video,this.canvas,this.canvas)
+                    //this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
@@ -79,8 +80,11 @@
             this.video = document.getElementById("video");
             this.c1 = document.getElementById("canvas-video");
             this.ctx1 = this.c1.getContext("2d");
-            this.ctx1.drawImage(this.video, 0, 0, 640, 480)
-            //エフェクト描写始まり（あとでwatchでstoreを監視する方式に変えるべき？）
+
+            this.canvas_resize(this.video,this.c1,this.c1)
+            うんちぶりゅ
+            //this.ctx1.drawImage(this.video, 0, 0, 640, 480)
+            //エフェクト描写始まり（必要以上に繰り返しているので、あとでwatchでstoreを監視する方式に変えるべき）
             this.c1 = document.getElementById("canvas-effect");
             this.ctx1 = this.c1.getContext("2d");
             this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -88,25 +92,30 @@
             //エフェクトのサイズ確認用に入れている。
             this.roseImage.src = this.landscapeImagePath[1];
             //エフェクト描写処理終わり
-            this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
+            //this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
+            this.canvas_resize(this.roseImage,this.c1,this.c1)
 
           },
-          canvas_resize(){
-              //canvasとdrawImageを全画面表示する
-              let theCanvas = document.getElementById('canvas');
-              let windowInnerWidth=window.innerWidth;
-              let windowInnerHeight=window.innerHeight;
-              console.log(windowInnerHeight)
-              theCanvas.setAttribute('width',windowInnerWidth);
-              theCanvas.setAttribute('height',windowInnerHeight);
-              },
+           canvas_resize(video_id,canvas_id,image_id){
+               //canvasとdrawImageを全画面表示する
+               let theCanvas = canvas_id
+               let windowInnerWidth=window.innerWidth;
+               let windowInnerHeight=window.innerHeight;
+               theCanvas.setAttribute('width',windowInnerWidth);
+               theCanvas.setAttribute('height',windowInnerHeight);
+             theCanvas = image_id
+             windowInnerWidth=window.innerWidth;
+             windowInnerHeight=window.innerHeight;
+             console.log(windowInnerHeight)
+             theCanvas.getContext("2d").drawImage(video_id, 0, 0 ,windowInnerWidth, windowInnerHeight)
+               },
           videoStart() {
                 this.video = this.$refs.video
               if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
                       this.video.srcObject = stream
                         this.video.play()
-                      this.canvas_resize()
+                      console.log(this.canvas)
 
 
                       this.video_timer=setInterval(this.computeFrame,16)
@@ -143,8 +152,7 @@ canvas { position: absolute; }
 #canvas-effect { z-index: 2; }
 #canvas-video { z-index: 1; }
 .wrapper{
-  width: 100%;
-  height: 100%;
+  width: 100vh;
 }
 
 </style>
