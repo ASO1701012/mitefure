@@ -3,17 +3,17 @@
     <ReturnButton class="return-position"/>
     <ResultRatioDisplay class="ratio-position" :point="point"/>
     <ResultHeart class="heart-position" :point="point"/>
-    <ResultTextArea class="text-position" :point="point"/>
+    <ResultTextArea class="text-position" :result-text="resultText"/>
     <ShareButtons class="button-position"/>
   </div>
 </template>
 
 <script>
-import ReturnButton from "./ReturnButton"
-import ShareButtons from "./ShareButtons"
-import ResultRatioDisplay from "./ResultRatioDisplay"
-import ResultHeart from "./ResultHeart"
-import ResultTextArea from "./ResultTextArea"
+    import ReturnButton from "./ReturnButton"
+    import ShareButtons from "./ShareButtons"
+    import ResultRatioDisplay from "./ResultRatioDisplay"
+    import ResultHeart from "./ResultHeart"
+    import ResultTextArea from "./ResultTextArea"
 
     export default {
         name: "Result",
@@ -44,6 +44,11 @@ import ResultTextArea from "./ResultTextArea"
                 }
             }
 
+        },
+        methods: {
+            confirmSave(event) {
+                event.returnValue = "本当に遷移してもよろしいですか？"
+            }
         },
     }
 </script>
