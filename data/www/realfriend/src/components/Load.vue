@@ -36,7 +36,7 @@
                 this.goodSum = this.sumScore(goods)
                 this.badSum = this.sumScore(bads)
 
-                if (neutral >= 2) {
+                if (neutral >= 3.5) {
                     this.$store.dispatch("Favo/changeEmotionPoint", 0.5)
                     this.resultText = '普通の顔です'
                 } else if (this.goodSum >= this.badSum) {
@@ -69,7 +69,7 @@
                 return sum
             },
             createGoodText: function (array) {
-                const score = 0.5 + Math.round((array[0][1] + array[1][1]) / 8 * 100) / 100
+                const score = 0.5 + Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100
                 this.$store.dispatch("Favo/changeEmotionPoint", score)
                 let resultText = ''
                 if (score >= 0.75) {
@@ -88,7 +88,7 @@
                 return resultText
             },
             createBadText: function (array) {
-                const score = 0.5 - Math.round((array[0][1] + array[1][1]) / 8 * 100) / 100
+                const score = 0.5 - Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100
                 this.$store.dispatch("Favo/changeEmotionPoint", score)
                 let resultText = ''
                 if (score <= 0.25) {
