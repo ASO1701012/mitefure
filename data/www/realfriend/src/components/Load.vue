@@ -57,7 +57,7 @@
                 })
 
                 for (let cnt = 0; cnt < 2; cnt++) {
-                    top_emotion.push(array[cnt][0])
+                    top_emotion.push(array[cnt])
                 }
                 return top_emotion
             },
@@ -69,7 +69,7 @@
                 return sum
             },
             createGoodText: function (array) {
-                const score = 0.5 + (array[0][1] + array[1][1]) / 8
+                const score = 0.5 + Math.round((array[0][1] + array[1][1]) / 8 * 100) / 100
                 this.$store.dispatch("Favo/changeEmotionPoint", score)
                 let resultText = ''
                 if (score >= 0.75) {
@@ -88,7 +88,7 @@
                 return resultText
             },
             createBadText: function (array) {
-                const score = 0.5 - (array[0][1] + array[1][1]) / 8
+                const score = 0.5 - Math.round((array[0][1] + array[1][1]) / 8 * 100) / 100
                 this.$store.dispatch("Favo/changeEmotionPoint", score)
                 let resultText = ''
                 if (score <= 0.25) {
