@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/">
+    <router-link to="/" @click="resetFavoState()">
       <img src="/static/return.svg" alt="読み取り失敗" class="return-img">
     </router-link>
   </div>
@@ -8,8 +8,15 @@
 
 <script>
 export default {
-  name: "ReturnButton"
+    name: "ReturnButton",
+    methods: {
+        resetFavoState() {
+            this.$store.dispatch("Favo/resetFavoState")
+        }
+
+    }
 }
+
 </script>
 
 <style scoped>
