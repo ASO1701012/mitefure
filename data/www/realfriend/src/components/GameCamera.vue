@@ -82,7 +82,6 @@
             this.ctx1 = this.c1.getContext("2d");
 
             this.canvas_resize(this.video,this.c1,this.c1)
-            うんちぶりゅ
             //this.ctx1.drawImage(this.video, 0, 0, 640, 480)
             //エフェクト描写始まり（必要以上に繰り返しているので、あとでwatchでstoreを監視する方式に変えるべき）
             this.c1 = document.getElementById("canvas-effect");
@@ -152,7 +151,7 @@ canvas { position: absolute; }
 #canvas-effect { z-index: 2; }
 #canvas-video { z-index: 1; }
 .wrapper{
-  width: 100vh;
+  position: absolute;
 }
 
 </style>
