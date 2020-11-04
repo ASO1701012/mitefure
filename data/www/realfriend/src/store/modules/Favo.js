@@ -1,7 +1,7 @@
 export default {
   namespaced: true,  //モジュールを名前空間に分ける
   state: {
-    emotionPoint: 80,  //合計点
+    emotionPoint: 0,  //合計点
     anger: 0,//怒り
     contempt: 0,//軽蔑
     disgust: 0,//嫌悪
@@ -10,9 +10,17 @@ export default {
     neutral: 0,//平常
     sadness: 0,//悲しみ
     surprise: 0,//驚き
-    emotionText: "もうこりごりだよぉ～～～～～～～～～～～～～"
+    resultText: '',
+    maxEmotion: null    //anger: 0
+                        // contempt: 1
+                        // disgust: 2
+                        // fear: 3
+                        // happiness: 4
+                        // neutral: 5
+                        // sadness: 6
+                        // surprise: 7
   },
-  getters:{
+  getters: {
     getEmotionPoint: state => {
       return state.emotionPoint
     },
@@ -40,8 +48,26 @@ export default {
     getSurprise: state => {
       return state.surprise
     },
-    getEmotionText: state => {
-      return state.emotionText
+    getGoodEmotions: state => {
+      return [
+        ['happiness', state.happiness],
+        ['surprise', state.surprise]
+      ]
+    },
+    getBadEmotions: state => {
+      return [
+        ['anger', state.anger],
+        ['contempt', state.contempt],
+        ['disgust', state.disgust],
+        ['fear', state.fear],
+        ['sadness', state.sadness],
+      ]
+    },
+    getResultText: state => {
+      return state.resultText
+    },
+    getMaxEmotion: state => {
+      return state.maxEmotion
     }
   },
   mutations: {
@@ -54,6 +80,33 @@ export default {
       state.neutral += payload.neutral
       state.sadness += payload.sadness
       state.surprise += payload.surprise
+    },
+    changeEmotionPoint(state, payload) {
+      state.emotionPoint = payload
+    },
+    changeResultText(state, payload) {
+      state.resultText = payload
+    },
+    setMaxEmotion(state, payload) {
+      let x = Object.values(payload)
+
+      //try文を書くべきかも
+      //数値が最大のキーを取得
+      state.maxEmotion = x.indexOf(x.reduce(function (a, b) {
+        return Math.max(a, b)
+      }))
+    },
+    resetFavoStore(state) {
+      state.emotionPoint = 0
+      state.anger = 0
+      state.contempt = 0
+      state.disgust = 0
+      state.fear = 0
+      state.happiness = 0
+      state.neutral = 0
+      state.sadness = 0
+      state.surprise = 0
+      state.maxEmotion = null
     }
   },
   actions: {
@@ -65,6 +118,39 @@ export default {
         }, 50)
       }))
     },
+    changeEmotionPoint: ({commit}, payload) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('changeEmotionPoint', payload)
+          resolve()
+        }, 50)
+      }))
+    },
+    changeResultText: ({commit}, payload) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('changeResultText', payload)
+          resolve()
+        }, 50)
+      }))
+    },
+    setMaxEmotion: ({commit}, payload) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('setMaxEmotion', payload)
+          resolve()
+        }, 50)
+      }))
+    },
+    resetFavoStore: ({commit}) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('resetFavoStore')
+          resolve()
+        }, 50)
+      }))
+    }
+
   }
 
 }
