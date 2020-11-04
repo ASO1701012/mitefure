@@ -3,7 +3,7 @@
     <ReturnButton class="return-position"/>
     <ResultRatioDisplay class="ratio-position" :point="point"/>
     <ResultHeart class="heart-position" :point="point"/>
-    <ResultTextArea class="text-position" :resultText="resultText"/>
+    <ResultTextArea class="text-position" :result-text="resultText"/>
     <ShareButtons class="button-position"/>
   </div>
 </template>
@@ -27,6 +27,28 @@
         created() {
             this.point = this.$store.getters['Favo/getEmotionPoint']
             this.resultText = this.$store.getters['Favo/getResultText']
+            window.addEventListener("beforeunload", this.confirmSave)
+        },
+        destroyed() {
+            window.removeEventListener("beforeunload", this.confirmSave)
+        },
+        beforeRouteLeave(to, from, next) {
+            if (to.name === "Title"){
+                next()
+            }else{
+                let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
+                if (answer) {
+                    next()
+                } else {
+                    next(false)
+                }
+            }
+
+        },
+        methods: {
+            confirmSave(event) {
+                event.returnValue = "本当に遷移してもよろしいですか？"
+            }
         },
     }
 </script>
