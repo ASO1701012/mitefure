@@ -13,32 +13,212 @@
 </template>
 
 <script>
-export default {
-  name: "Load.vue",
-  created() {
-    window.addEventListener("beforeunload", this.confirmSave)
-  },
-  destroyed() {
-    window.removeEventListener("beforeunload", this.confirmSave)
-  },
-  beforeRouteLeave (to, from, next) {
-    if (to.name === "Result"){
-      next()
-    }else{
-      let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
-      if (answer) {
-        next()
-      } else {
-        next(false)
-      }
+    export default {
+        name: "Load.vue",
+        data() {
+            return {
+                goodEmotions: [],
+                badEmotions: [],
+                neutral: 0,
+                goodSum: 0,
+                badSum: 0,
+                resultText: ''
+            }
+        },
+        created() {
+            this.goodEmotions = this.$store.getters['Favo/getGoodEmotions']
+            this.badEmotions = this.$store.getters['Favo/getBadEmotions']
+            this.neutral = this.$store.getters['Favo/getNeutral']
+            this.textGeneration(this.goodEmotions, this.badEmotions, this.neutral)
+            window.addEventListener("beforeunload", this.confirmSave)
+        },
+        destroyed() {
+            window.removeEventListener("beforeunload", this.confirmSave)
+        },
+        beforeRouteLeave (to, from, next) {
+            if (to.name === "Result"){
+                next()
+            }else{
+                let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
+                if (answer) {
+                    next()
+                } else {
+                    next(false)
+                }
+            }
+        },
+        methods: {
+            textGeneration: function (goods, bads, neutral) {
+                this.goodSum = this.sumScore(goods)
+                this.badSum = this.sumScore(bads)
+
+                if (neutral >= 3.5) {
+                    this.$store.dispatch("Favo/changeEmotionPoint", 50)
+                    this.resultText = '普通の顔です'
+                } else if (this.goodSum >= this.badSum) {
+                    const top_emotion = this.getTopEmotion(goods)
+                    this.resultText = this.createGoodText(top_emotion)
+                } else {
+                    const top_emotion = this.getTopEmotion(bads)
+                    this.resultText = this.createBadText(top_emotion)
+                }
+                //Textをstoreに保存する処理
+                this.$store.dispatch("Favo/changeResultText", this.resultText)
+            },
+            getTopEmotion: function (array) {
+                let top_emotion = []
+
+                array.sort(function (a, b) {
+                    return (b[1] - a[1])
+                })
+
+                for (let cnt = 0; cnt < 2; cnt++) {
+                    top_emotion.push(array[cnt])
+                }
+                return top_emotion
+            },
+            sumScore: function (array) {
+                let sum = 0
+                for (let i = 0; i < array.length; i++) {
+                    sum += array[i][1]
+                }
+                return sum
+            },
+            createGoodText: function (array) {
+                const score = Math.round((0.5 + Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100) * 100)
+                this.$store.dispatch("Favo/changeEmotionPoint", score)
+                let resultText = ''
+                if (score >= 0.75) {
+                    if (array[0][0] === 'happiness') {
+                        resultText = 'happy,surprise'
+                    } else {
+                        resultText = 'surprise,happy'
+                    }
+                } else {
+                    if (array[0][0] === 'happiness') {
+                        resultText = 'happy,surprise'
+                    } else {
+                        resultText = 'surprise,happy'
+                    }
+                }
+                return resultText
+            },
+            createBadText: function (array) {
+                const score = Math.round((0.5 - Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100) * 100)
+                this.$store.dispatch("Favo/changeEmotionPoint", score)
+                let resultText = ''
+                if (score <= 0.25) {
+                    if (array[0][0] === 'anger') {
+                        if (array[1][0] === 'contempt') {
+                            resultText = 'anger,contempt'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'anger,disgust'
+                        } else if (array[1][0] === 'fear') {
+                            resultText = 'anger,fear'
+                        } else {
+                            resultText = 'anger,sadness'
+                        }
+                    } else if (array[0][0] === 'contempt') {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'contempt,anger'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'contempt,disgust'
+                        } else if (array[1][0] === 'fear') {
+                            resultText = 'contempt,fear'
+                        } else {
+                            resultText = 'contempt,sadness'
+                        }
+                    } else if (array[0][0] === 'disgust') {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'disgust,anger'
+                        } else if (array[1][0] === 'contempt') {
+                            resultText = 'disgust,contempt'
+                        } else if (array[1][0] === 'fear') {
+                            resultText = 'disgust,fear'
+                        } else {
+                            resultText = 'disgust,sadness'
+                        }
+                    } else if (array[0][0] === 'fear') {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'fear,anger'
+                        } else if (array[1][0] === 'contempt') {
+                            resultText = 'fear,contempt'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'fear,disgust'
+                        } else {
+                            resultText = 'fear,sadness'
+                        }
+                    } else {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'sadness,anger'
+                        } else if (array[1][0] === 'contempt') {
+                            resultText = 'sadness,contempt'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'sadness,disgust'
+                        } else {
+                            resultText = 'sadness,fear'
+                        }
+                    }
+                } else {
+                    if (array[0][0] === 'anger') {
+                        if (array[1][0] === 'contempt') {
+                            resultText = 'anger,contempt'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'anger,disgust'
+                        } else if (array[1][0] === 'fear') {
+                            resultText = 'anger,fear'
+                        } else {
+                            resultText = 'anger,sadness'
+                        }
+                    } else if (array[0][0] === 'contempt') {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'contempt,anger'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'contempt,disgust'
+                        } else if (array[1][0] === 'fear') {
+                            resultText = 'contempt,fear'
+                        } else {
+                            resultText = 'contempt,sadness'
+                        }
+                    } else if (array[0][0] === 'disgust') {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'disgust,anger'
+                        } else if (array[1][0] === 'contempt') {
+                            resultText = 'disgust,contempt'
+                        } else if (array[1][0] === 'fear') {
+                            resultText = 'disgust,fear'
+                        } else {
+                            resultText = 'disgust,sadness'
+                        }
+                    } else if (array[0][0] === 'fear') {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'fear,anger'
+                        } else if (array[1][0] === 'contempt') {
+                            resultText = 'fear,contempt'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'fear,disgust'
+                        } else {
+                            resultText = 'fear,sadness'
+                        }
+                    } else {
+                        if (array[1][0] === 'anger') {
+                            resultText = 'sadness,anger'
+                        } else if (array[1][0] === 'contempt') {
+                            resultText = 'sadness,contempt'
+                        } else if (array[1][0] === 'disgust') {
+                            resultText = 'sadness,disgust'
+                        } else {
+                            resultText = 'sadness,fear'
+                        }
+                    }
+                }
+                return resultText
+            },
+            confirmSave(event){
+                event.returnValue = "本当に遷移してもよろしいですか？"
+            }
+        }
     }
-  },
-  methods:{
-    confirmSave(event){
-      event.returnValue = "本当に遷移してもよろしいですか？"
-    }
-  },
-}
 </script>
 
 <style scoped>
