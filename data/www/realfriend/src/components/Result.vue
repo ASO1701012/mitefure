@@ -3,7 +3,7 @@
     <ReturnButton class="return-position"/>
     <ResultRatioDisplay class="rario-position" :point="point"/>
     <ResultHeart class="heart-position" :point="point"/>
-    <ResultTextArea :resultText="resultText"/>
+    <ResultTextArea class="text-position" :resultText="resultText"/>
     <ShareButtons class="button-position"/>
   </div>
 </template>
