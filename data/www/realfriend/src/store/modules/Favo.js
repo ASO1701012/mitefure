@@ -71,6 +71,18 @@ export default {
       state.maxEmotion = x.indexOf(x.reduce(function (a, b) {
         return Math.max(a, b)
       }))
+    },
+    resetFavoStore(state) {
+      state.emotionPoint = 0
+      state.anger = 0
+      state.contempt = 0
+      state.disgust = 0
+      state.fear = 0
+      state.happiness = 0
+      state.neutral = 0
+      state.sadness = 0
+      state.surprise = 0
+      state.maxEmotion = null
     }
   },
   actions: {
@@ -86,6 +98,14 @@ export default {
       return new Promise(((resolve, reject) => {
         setTimeout(() => {
           commit('setMaxEmotion', payload)
+          resolve()
+        }, 50)
+      }))
+    },
+    resetFavoStore: ({commit}) => {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          commit('resetFavoStore')
           resolve()
         }, 50)
       }))
