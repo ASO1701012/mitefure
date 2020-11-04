@@ -20,7 +20,7 @@ export default {
 <style scoped>
 .parent {
   display: flex;
-  width: 20%;
+  width: 150px;
   justify-content: space-around;
 }
 
