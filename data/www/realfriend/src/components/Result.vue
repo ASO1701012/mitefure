@@ -3,34 +3,32 @@
     <ReturnButton class="return-position"/>
     <ResultRatioDisplay class="rario-position" :point="point"/>
     <ResultHeart class="heart-position" :point="point"/>
-    <ResultTextArea class="text-position" :point="point"/>
+    <ResultTextArea class="text-position" :resultText="resultText"/>
     <ShareButtons class="button-position"/>
   </div>
 </template>
 
 <script>
-import ReturnButton from "./ReturnButton"
-import ShareButtons from "./ShareButtons"
-import ResultRatioDisplay from "./ResultRatioDisplay"
-import ResultHeart from "./ResultHeart"
-import ResultTextArea from "./ResultTextArea"
+    import ReturnButton from "./ReturnButton"
+    import ShareButtons from "./ShareButtons"
+    import ResultRatioDisplay from "./ResultRatioDisplay"
+    import ResultHeart from "./ResultHeart"
+    import ResultTextArea from "./ResultTextArea"
 
-export default {
-  name: "Result",
-  components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons, ReturnButton},
-  data() {
-    return {
-      point: 0,
-      // Text: "",
+    export default {
+        name: "Result",
+        components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons, ReturnButton},
+        data() {
+            return {
+                point: 0,
+                resultText: ""
+            }
+        },
+        created() {
+            this.point = this.$store.getters['Favo/getEmotionPoint']
+            this.resultText = this.$store.getters['Favo/getResultText']
+        },
     }
-  },
-  methods() {
-
-  },
-  created() {
-    this.point = this.$store.getters['Favo/getEmotionPoint']
-  }
-}
 </script>
 
 <style scoped>
