@@ -22,7 +22,7 @@ export default {
   },
   getters: {
     getEmotionPoint: state => {
-      return state.emotionPoint * 100
+      return state.emotionPoint
     },
     getAnger: state => {
       return state.anger

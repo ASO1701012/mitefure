@@ -69,7 +69,7 @@
                 return sum
             },
             createGoodText: function (array) {
-                const score = 0.5 + Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100
+                const score = Math.round((0.5 + Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100) * 100)
                 this.$store.dispatch("Favo/changeEmotionPoint", score)
                 let resultText = ''
                 if (score >= 0.75) {
@@ -82,13 +82,13 @@
                     if (array[0][0] === 'happiness') {
                         resultText = 'happy,surprise'
                     } else {
-                        resultText = 'happy,surprise'
+                        resultText = 'surprise,happy'
                     }
                 }
                 return resultText
             },
             createBadText: function (array) {
-                const score = 0.5 - Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100
+                const score = Math.round((0.5 - Math.floor((array[0][1] + array[1][1]) / 8 * 100) / 100) * 100)
                 this.$store.dispatch("Favo/changeEmotionPoint", score)
                 let resultText = ''
                 if (score <= 0.25) {
