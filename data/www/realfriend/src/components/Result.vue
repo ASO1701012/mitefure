@@ -1,36 +1,56 @@
 <template>
   <div>
     <ReturnButton class="return-position"/>
-    <ResultRatioDisplay class="rario-position" :point="point"/>
+    <ResultRatioDisplay class="ratio-position" :point="point"/>
     <ResultHeart class="heart-position" :point="point"/>
-    <ResultTextArea class="text-position" :point="point"/>
+    <ResultTextArea class="text-position" :result-text="resultText"/>
     <ShareButtons class="button-position"/>
   </div>
 </template>
 
 <script>
-import ReturnButton from "./ReturnButton"
-import ShareButtons from "./ShareButtons"
-import ResultRatioDisplay from "./ResultRatioDisplay"
-import ResultHeart from "./ResultHeart"
-import ResultTextArea from "./ResultTextArea"
+    import ReturnButton from "./ReturnButton"
+    import ShareButtons from "./ShareButtons"
+    import ResultRatioDisplay from "./ResultRatioDisplay"
+    import ResultHeart from "./ResultHeart"
+    import ResultTextArea from "./ResultTextArea"
 
-export default {
-  name: "Result",
-  components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons, ReturnButton},
-  data() {
-    return {
-      point: 0,
-      // Text: "",
+    export default {
+        name: "Result",
+        components: {ResultTextArea, ResultHeart, ResultRatioDisplay, ShareButtons, ReturnButton},
+        data() {
+            return {
+                point: 0,
+                resultText: ""
+            }
+        },
+        created() {
+            this.point = this.$store.getters['Favo/getEmotionPoint']
+            this.resultText = this.$store.getters['Favo/getResultText']
+            window.addEventListener("beforeunload", this.confirmSave)
+        },
+        destroyed() {
+            window.removeEventListener("beforeunload", this.confirmSave)
+        },
+        beforeRouteLeave(to, from, next) {
+            if (to.name === "Title"){
+                next()
+            }else{
+                let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
+                if (answer) {
+                    next()
+                } else {
+                    next(false)
+                }
+            }
+
+        },
+        methods: {
+            confirmSave(event) {
+                event.returnValue = "本当に遷移してもよろしいですか？"
+            }
+        },
     }
-  },
-  methods() {
-
-  },
-  created() {
-    this.point = this.$store.getters['Favo/getEmotionPoint']
-  }
-}
 </script>
 
 <style scoped>
@@ -53,7 +73,7 @@ export default {
   float:left;
   position: absolute;
 }
-.rario-position{
+.ratio-position{
   font-size: x-large;
 }
 .heart-position{

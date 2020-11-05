@@ -1,15 +1,24 @@
 <template>
   <div>
-    <router-link to="/">
+    <button v-on:click="resetFavoState">
       <img src="/static/return.svg" alt="読み取り失敗" class="return-img">
-    </router-link>
+    </button>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: "ReturnButton"
+    name: "ReturnButton",
+    methods: {
+        resetFavoState() {
+            this.$store.dispatch("Favo/resetFavoStore")
+            this.$router.push('/')
+        }
+
+    }
 }
+
 </script>
 
 <style scoped>

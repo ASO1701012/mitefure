@@ -41,9 +41,34 @@
     },
     methods: {
         start() {
+
+            const EXECUTE = async () => {
+                const setFriendName = () => {
+                    return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            this.$store.dispatch('Friend/nameSet', this.getTextBoxText)
+                            console.log("セットフレンドネーム")
+                            resolve()
+                        }, 100)
+                    })
+                }
+
+                const startGame = () => {
+                    return new Promise(((resolve, reject) => {
+                        setTimeout(() => {
+                            console.log("移動します")
+                            this.$router.push('/game')
+                            resolve()
+                        }, 100)
+                    }))
+                }
+
+                await setFriendName()
+                await startGame()
+            }
+
             if (this.getTextBoxText != '') {
-                this.$store.dispatch('Friend/nameSet', this.getTextBoxText)
-                this.$router.push('/game')
+                EXECUTE()
             } else {
                 alert('名前を入力してください！')
             }
