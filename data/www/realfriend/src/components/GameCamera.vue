@@ -21,7 +21,7 @@
                 canvas: {},  //canvas領域
                 timer: null, //インターバル用のタイマー
               video_timer:null,//canvas-video用のインターバルタイマー
-              roseImage:new Image,
+              effectImage:new Image,
               landscapeImagePath : [
                 '/static/angry.png',
                 '/static/bad.png',
@@ -66,46 +66,41 @@
                 console.log("captureに入りました")
                 if(this.count<4){
                     //カメラが写っている範囲を指定し、その領域を画像として切り取る
-                  this.canvas = document.getElementById("canvas-capture");
+                  this.canvas = document.getElementById("canvas-capture")
                   this.canvas_resize(this.video,this.canvas,this.canvas)
-                    //this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480)
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    //this.faceApi()
+                    this.faceApi()
                     this.count++
                 }
             },
           computeFrame() {
-            this.video = document.getElementById("video");
-            this.c1 = document.getElementById("canvas-video");
-            this.ctx1 = this.c1.getContext("2d");
-
+            this.video = document.getElementById("video")
+            this.c1 = document.getElementById("canvas-video")
+            this.ctx1 = this.c1.getContext("2d")
             this.canvas_resize(this.video,this.c1,this.c1)
-            //this.ctx1.drawImage(this.video, 0, 0, 640, 480)
             //エフェクト描写始まり（必要以上に繰り返しているので、あとでwatchでstoreを監視する方式に変えるべき）
-            this.c1 = document.getElementById("canvas-effect");
-            this.ctx1 = this.c1.getContext("2d");
-            this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.c1 = document.getElementById("canvas-effect")
+            this.ctx1 = this.c1.getContext("2d")
+            this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height)
             let i=this.$store.getters["Favo/getMaxEmotion"]
             //エフェクトのサイズ確認用に入れている。
-            this.roseImage.src = this.landscapeImagePath[1];
+            this.effectImage.src = this.landscapeImagePath[i]
             //エフェクト描写処理終わり
-            //this.ctx1.drawImage(this.roseImage, 0, 0, 640, 480)
-            this.canvas_resize(this.roseImage,this.c1,this.c1)
+            this.canvas_resize(this.effectImage,this.c1,this.c1)
 
           },
            canvas_resize(video_id,canvas_id,image_id){
                //canvasとdrawImageを全画面表示する
                let theCanvas = canvas_id
-               let windowInnerWidth=window.innerWidth;
-               let windowInnerHeight=window.innerHeight;
-               theCanvas.setAttribute('width',windowInnerWidth);
-               theCanvas.setAttribute('height',windowInnerHeight);
+               let windowInnerWidth=window.innerWidth
+               let windowInnerHeight=window.innerHeight
+               theCanvas.setAttribute('width',windowInnerWidth)
+               theCanvas.setAttribute('height',windowInnerHeight)
              theCanvas = image_id
-             windowInnerWidth=window.innerWidth;
-             windowInnerHeight=window.innerHeight;
-             console.log(windowInnerHeight)
+             windowInnerWidth=window.innerWidth
+             windowInnerHeight=window.innerHeight
              theCanvas.getContext("2d").drawImage(video_id, 0, 0 ,windowInnerWidth, windowInnerHeight)
                },
           videoStart() {
@@ -121,9 +116,9 @@
                         this.timer =setInterval(this.capture, 3000)
 
                         //14秒後に撮影を終了する
-                        //setTimeout(this.captureStop, 14000)
+                        setTimeout(this.captureStop, 14000)
                         //20秒後にカメラを停止する
-                        //setTimeout(this.videoStop, 20000)
+                        setTimeout(this.videoStop, 20000)
                     })
                 } else {
                     console.log("getUserMedia not support")

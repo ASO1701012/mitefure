@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-style">
     {{statusMessage}}
   </div>
 </template>
@@ -59,5 +59,15 @@
 </script>
 
 <style scoped>
+.text-style{
+  background-color: #ce86c06e;
+  padding-bottom: 5%;
+  padding-right: 20%;
+  font-size: x-large;
+  border: solid;
+  border-color: pink;
+  border-radius: 8px;
+  color: white;
+}
 
 </style>
