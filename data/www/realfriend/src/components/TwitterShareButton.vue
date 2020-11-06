@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw">
+   <a :href="url">
       <img src="/static/twitter_icon.svg" alt="">
     </a>
   </div>
@@ -8,7 +8,18 @@
 
 <script>
 export default {
-  name: "TwitterShareButton"
+  name: "TwitterShareButton",
+  data(){
+    return{
+      url:"",
+    }
+  },
+  created() {
+    let url = new URL("https://twitter.com/share")
+    url.searchParams.set("url","https://realfriend.online/")
+    url.searchParams.set("text",this.$store.getters['Favo/getResultText'])
+    this.url = url
+  },
 }
 </script>
 
