@@ -1,6 +1,6 @@
 <template>
   <div>
-   <a :href="url">
+   <a :href="url" target="_blank">
       <img src="/static/twitter_icon.svg" alt="">
     </a>
   </div>

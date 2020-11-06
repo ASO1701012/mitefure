@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="/static/reallogo.png">
-    <h2>REAL FRIEND</h2>
+    <h1>REALFRIEND</h1>
     <div class="container mx-auto container-style">
       <div class="d-inline input-style">
 
