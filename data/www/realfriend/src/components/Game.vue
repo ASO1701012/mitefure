@@ -22,12 +22,14 @@
         if (to.name === "Load"){
           next()
         }else{
-          let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
-          if (answer) {
-            next()
-          } else {
-            next(false)
-          }
+          // let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。!!!")
+          next(false)
+          // if (answer) {
+          //   next()
+          //   // location.reload()
+          // } else {
+          //   next(false)
+          // }
         }
       },
       methods:{

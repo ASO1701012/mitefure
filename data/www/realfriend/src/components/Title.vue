@@ -74,6 +74,19 @@
             }
       }
     },
+      beforeRouteLeave(to, from, next) {
+        if (to.name === "Game") {
+          next()
+        } else {
+          next(false)
+          // let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
+          // if (answer) {
+          //   next()
+          // } else {
+          //   next(false)
+          // }
+        }
+      }
   }
 </script>
 

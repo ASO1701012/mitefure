@@ -36,12 +36,7 @@
             if (to.name === "Title"){
                 next()
             }else{
-                let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
-                if (answer) {
-                    next()
-                } else {
-                    next(false)
-                }
+              next(false)
             }
 
         },
