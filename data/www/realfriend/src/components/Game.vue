@@ -44,10 +44,14 @@
   z-index:1;
 }
 .status-style{
+  width: 80%;
   position: absolute;
   z-index:2;
   bottom: 1%;
   left: 50%;
   transform: translateX(-50%);
+}
+.game-style{
+  background-color: #000000;
 }
 </style>

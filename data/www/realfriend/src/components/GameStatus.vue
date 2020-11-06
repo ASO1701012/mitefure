@@ -1,6 +1,13 @@
 <template>
-  <div class="text-style">
-    {{statusMessage}}
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="svg-style">
+      <rect width="100%" height="100%" rx="10" ry="10" class="frame-style"/>
+      <text x="10" y="21" pointer-events="none" class="text-style text--white">
+
+        加藤純一最強加藤純一最強加藤純一最強加藤純一最強加藤純一最強加藤純一最強これは長文の際の開業のテストです。
+        まだ、でもデータなのできにしないでください。
+      </text>
+    </svg>
   </div>
 </template>
 
@@ -9,7 +16,7 @@
         name: "GameStatus",
         data() {
             return {
-                statusMessage:null,
+                statusMessage:'てすとさんの皇漢堂があがりました'
             }
         },
         mounted() {
@@ -59,15 +66,18 @@
 </script>
 
 <style scoped>
-.text-style{
-  background-color: #ce86c06e;
-  padding-bottom: 5%;
-  padding-right: 20%;
-  font-size: x-large;
-  border: solid;
-  border-color: pink;
-  border-radius: 8px;
-  color: white;
-}
 
+.text-style{
+  font-size: x-large;
+  fill: white;
+  word-break: break-all;
+}
+.frame-style{
+  fill: pink;
+  stroke: #ff87e0;
+  stroke-width: 1;
+}
+.svg-style{
+  width: 100%;
+}
 </style>
