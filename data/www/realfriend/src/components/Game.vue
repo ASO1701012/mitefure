@@ -56,6 +56,7 @@
   transform: translateX(-50%);
 }
 .game-style{
+  height: 100vh;
   background-color: #000000;
 }
 </style>
