@@ -3,9 +3,6 @@ import Router from 'vue-router'
 import VueAnalytics from 'vue-analytics'
 
 import Title from "@/components/Title"
-import Result from "@/components/Result"
-import Load from "@/components/Load"
-import Game from "@/components/Game"
 
 import store from "@/store"
 
@@ -21,7 +18,8 @@ const router = new Router({
     {
       path: '/result',
       name: 'Result',
-      component: Result,
+      //遅延ローディング
+      component: () => import(/* webpackChunkName: "Result" */"@/components/Result"),
 
       //アクセスガード
       beforeEnter: (to, from, next) => {
@@ -35,7 +33,8 @@ const router = new Router({
     {
       path:'/load',
       name:'Load',
-      component: Load,
+      //遅延ローディング
+      component: () => import(/* webpackChunkName: "Load" */"@/components/Load"),
 
       //アクセスガード
       beforeEnter: (to, from, next) => {
@@ -49,7 +48,8 @@ const router = new Router({
     {
       path: '/game',
       name: 'Game',
-      component: Game,
+      //遅延ローディング
+      component: () => import(/* webpackChunkName: "Game" */"@/components/Game"),
 
       //アクセスガード
       beforeEnter: (to, from, next) => {
