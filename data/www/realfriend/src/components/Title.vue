@@ -24,8 +24,10 @@
         友達や気になるあの人を気軽に診断してみよう!
       </NormalTextArea>
     <div class="follow-button">
-      <a href="https://twitter.com/AsoRealFriend?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @AsoRealFriend</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a class="twitter-follow-button"
+         href="https://twitter.com/AsoRealFriend"
+         data-size="large">
+        Follow @AsoRealFriend</a>
     </div>
   </div>
 </template>
@@ -118,5 +120,15 @@
   .text-wrap{
     width: 50%;
   }
+}
+
+
+.follow-button {
+  background-color: #00b0ff;
+  width: 10%;
+  margin: auto;
+}
+.follow-button a{
+  color: white;
 }
 </style>
