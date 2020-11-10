@@ -1,11 +1,9 @@
 <template>
   <div>
     <svg xmlns="http://www.w3.org/2000/svg" class="svg-style">
-      <rect width="100%" height="100%" rx="10" ry="10" class="frame-style"/>
+      <rect width="100%" height="100%" rx="10" ry="10" stroke-width="3" class="frame-style"/>
       <text x="10" y="21" pointer-events="none" class="text-style text--white">
-
-        加藤純一最強加藤純一最強加藤純一最強加藤純一最強加藤純一最強加藤純一最強これは長文の際の開業のテストです。
-        まだ、でもデータなのできにしないでください。
+        {{statusMessage}}
       </text>
     </svg>
   </div>
@@ -16,7 +14,8 @@
         name: "GameStatus",
         data() {
             return {
-                statusMessage:'てすとさんの皇漢堂があがりました'
+                statusMessage:"3",
+              countDown : 3,
             }
         },
         mounted() {
@@ -26,7 +25,23 @@
                 }
             })
         },
+      created:function (){
+        this.countDownTimer()
+      },
         methods:{
+          //カウントダウン用
+          countDownTimer() {
+            if(this.countDown > 0) {
+              setTimeout(() => {
+                this.countDown -= 1
+                this.statusMessage=String(this.countDown)
+                this.countDownTimer()
+              }, 1000)
+            }
+            if(this.countDown===0){
+              this.statusMessage="撮影開始"
+            }
+          },
             changeStatusMessage() {
                 let x = this.$store.getters['Favo/getMaxEmotion'] //xに最大値のキーを代入
                 let friendName = this.$store.getters['Friend/nameGet']//フレンドの名前を取得
@@ -60,7 +75,6 @@
                     this.statusMessage = "うまく感情を読み取れなかったよ"
                 }
             }
-
         }
     }
 </script>
@@ -75,7 +89,7 @@
 .frame-style{
   fill: pink;
   stroke: #ff87e0;
-  stroke-width: 1;
+  stroke-width: 3;
 }
 .svg-style{
   width: 100%;

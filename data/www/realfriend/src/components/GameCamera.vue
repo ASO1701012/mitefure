@@ -40,7 +40,7 @@
         },
         mounted() {
             //画面が開いてから３秒後にカメラを起動
-            setTimeout(this.videoStart, 100000)
+            setTimeout(this.videoStart, 3000)
         },
         methods: {
             faceApi() {
@@ -71,7 +71,7 @@
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    //this.faceApi()
+                    this.faceApi()
                     this.count++
                 }
             },
@@ -116,9 +116,9 @@
                         this.timer =setInterval(this.capture, 3000)
 
                         //14秒後に撮影を終了する
-                        //setTimeout(this.captureStop, 14000)
+                        setTimeout(this.captureStop, 14000)
                         //20秒後にカメラを停止する
-                        //setTimeout(this.videoStop, 20000)
+                        setTimeout(this.videoStop, 20000)
                     })
                 } else {
                     console.log("getUserMedia not support")

@@ -1,5 +1,6 @@
 <template>
   <div>
+<!--buttonがbootstrapの影響で独自のCSSが反映されているので修正する。-->
     <button v-on:click="resetFavoState">
       <img src="/static/return.svg" alt="読み取り失敗" class="return-img">
     </button>
