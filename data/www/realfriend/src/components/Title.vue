@@ -23,6 +23,10 @@
         あなたと話しているときの反応を調べ好感度を表示するアプリです。
         友達や気になるあの人を気軽に診断してみよう!
       </NormalTextArea>
+    <div class="follow-button">
+      <a href="https://twitter.com/AsoRealFriend?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @AsoRealFriend</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
   </div>
 </template>
 
