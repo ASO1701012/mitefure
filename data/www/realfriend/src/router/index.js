@@ -4,6 +4,7 @@ import VueAnalytics from 'vue-analytics'
 
 import Title from "@/components/Title"
 
+
 import store from "@/store"
 
 Vue.use(Router)
