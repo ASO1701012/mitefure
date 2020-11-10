@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="/static/reallogo.png">
-    <h2>REAL FRIEND</h2>
+    <h1>REALFRIEND</h1>
     <div class="container mx-auto container-style">
       <div class="justify-content-center input-style">
 
@@ -74,6 +74,19 @@
             }
       }
     },
+      beforeRouteLeave(to, from, next) {
+        if (to.name === "Game") {
+          next()
+        } else {
+          next(false)
+          // let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。")
+          // if (answer) {
+          //   next()
+          // } else {
+          //   next(false)
+          // }
+        }
+      }
   }
 </script>
 
