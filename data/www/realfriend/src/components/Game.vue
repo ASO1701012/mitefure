@@ -1,7 +1,7 @@
 <template>
   <div class="game-style">
-    <GameCamera class="camera-style"></GameCamera>
-    <GameStatus class="status-style"></GameStatus>
+    <GameCamera ref="camera" class="camera-style"></GameCamera>
+    <GameStatus ref="status" class="status-style"></GameStatus>
   </div>
 </template>
 
@@ -35,6 +35,10 @@
             event.returnValue = "本当に遷移してもよろしいですか？"
           }
       },
+      mounted() {
+        setTimeout(this.$refs.camera.videoStart, 3000)
+        this.$refs.status.countDownTimer()
+      }
 
     }
 </script>

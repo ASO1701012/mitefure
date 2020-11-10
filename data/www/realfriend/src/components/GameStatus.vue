@@ -25,9 +25,6 @@
                 }
             })
         },
-      created:function (){
-        this.countDownTimer()
-      },
         methods:{
           //カウントダウン用
           countDownTimer() {

@@ -39,8 +39,6 @@
             }
         },
         mounted() {
-            //画面が開いてから３秒後にカメラを起動
-            setTimeout(this.videoStart, 3000)
         },
         methods: {
             faceApi() {
