@@ -7,6 +7,7 @@ import Result from "@/components/Result"
 import Load from "@/components/Load"
 import Game from "@/components/Game"
 
+
 import store from "@/store"
 
 Vue.use(Router)
