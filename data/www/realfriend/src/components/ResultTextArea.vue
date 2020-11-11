@@ -8,30 +8,10 @@
 </template>
 
 <script>
-export default {
-  name: "TextArea",
-  props:['point'],
-  data() {
-    return {
-      resultText: "",
-      tmpText:this.point
+    export default {
+        name: "TextArea",
+        props: ['resultText'],
     }
-  },
-  created() {
-    this.textGeneration(this.tmpText)
-  },
-  methods: {
-      textGeneration:function (value){
-        if (value === 0){
-          this.resultText = 'あなたの運勢は0です！！！'
-        }else if (value === 100){
-          this.resultText = 'あなたの運勢は100です！！！'
-        }else{
-          this.resultText = 'わかりませんでした！！'
-        }
-      }
- }
-}
 </script>
 
 <style scoped>
