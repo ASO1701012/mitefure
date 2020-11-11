@@ -28,15 +28,24 @@
         methods:{
           //カウントダウン用
           countDownTimer() {
-            if(this.countDown > 0) {
+            if(this.countDown > -2) {
               setTimeout(() => {
+                if (this.countDown==0){
+                  this.countDown -= 1
+                  console.log("if文には入ってる")
+                  this.statusMessage="スタート"
+                  console.log(this.statusMessage)
+                  this.countDownTimer()
+                }
+                else {
                 this.countDown -= 1
                 this.statusMessage=String(this.countDown)
+                  console.log(this.countDown)
                 this.countDownTimer()
-              }, 1000)
+              }}, 1000)
             }
-            if(this.countDown===0){
-              this.statusMessage="撮影開始"
+            if(this.countDown===-2){
+              this.statusMessage=null
             }
           },
             changeStatusMessage() {

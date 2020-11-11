@@ -1,12 +1,12 @@
 <template>
   <div>
-    <video style="display: none;" ref="video" id="video" width="500" height="500"  autoplay muted></video>
+    <video style="display: none;" ref="video" width="500" height="500" playsinline="true" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
     <div class="wrapper">
-    <canvas ref="canvas-video" width="500" height="500"></canvas>
-    <canvas ref="canvas-effect" width="500" height="500"></canvas>
+    <canvas ref="canvasVideo" width="500" height="500"></canvas>
+    <canvas ref="canvasEffect" width="500" height="500"></canvas>
     </div>
-    <canvas ref="canvas-capture" width="500" height="500" hidden></canvas>
+    <canvas ref="canvasCapture" width="500" height="500" hidden></canvas>
   </div>
 </template>
 
@@ -64,8 +64,7 @@
                 console.log("captureに入りました")
                 if(this.count<4){
                     //カメラが写っている範囲を指定し、その領域を画像として切り取る
-                  this.canvas = document.getElementById("canvas-capture")
-                  this.canvas = this.$refs.canvas-capture
+                  this.canvas = this.$refs.canvasCapture
                   this.canvas_resize(this.video,this.canvas,this.canvas)
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
@@ -75,12 +74,12 @@
                 }
             },
           computeFrame() {
-            this.video = document.getElementById("video")
-            this.c1 = document.getElementById("canvas-video")
+            this.video = this.$refs.video
+            this.c1 = this.$refs.canvasVideo
             this.ctx1 = this.c1.getContext("2d")
             this.canvas_resize(this.video,this.c1,this.c1)
             //エフェクト描写始まり（必要以上に繰り返しているので、あとでwatchでstoreを監視する方式に変えるべき）
-            this.c1 = document.getElementById("canvas-effect")
+            this.c1 = this.$refs.canvasEffect
             this.ctx1 = this.c1.getContext("2d")
             this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height)
             let i=this.$store.getters["Favo/getMaxEmotion"]
@@ -115,9 +114,9 @@
                         //this.timer =setInterval(this.capture, 3000)
 
                         //14秒後に撮影を終了する
-                        //setTimeout(this.captureStop, 14000)
+                        setTimeout(this.captureStop, 14000)
                         //20秒後にカメラを停止する
-                        //setTimeout(this.videoStop, 20000)
+                        setTimeout(this.videoStop, 20000)
                     })
                 } else {
                     console.log("getUserMedia not support")
