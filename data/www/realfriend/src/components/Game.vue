@@ -38,7 +38,7 @@
           }
       },
       mounted() {
-        setTimeout(this.$refs.camera.videoStart, 3000)
+        //setTimeout(this.$refs.camera.videoStart, 3000)
         this.$refs.status.countDownTimer()
       }
 

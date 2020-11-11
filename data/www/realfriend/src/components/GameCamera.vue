@@ -1,12 +1,12 @@
 <template>
   <div>
-    <video style="display: none;" ref="video" id="video" width="500" height="500" autoplay muted></video>
+    <video style="display: none;" ref="video" id="video" width="500" height="500"  autoplay muted></video>
     <!--    canvasを表示しないようにする-->
     <div class="wrapper">
-    <canvas id="canvas-video" width="500" height="500"></canvas>
-    <canvas id="canvas-effect" width="500" height="500"></canvas>
+    <canvas ref="canvas-video" width="500" height="500"></canvas>
+    <canvas ref="canvas-effect" width="500" height="500"></canvas>
     </div>
-    <canvas ref="canvas" id="canvas-capture" width="500" height="500" hidden></canvas>
+    <canvas ref="canvas-capture" width="500" height="500" hidden></canvas>
   </div>
 </template>
 
@@ -30,7 +30,7 @@
                 '/static/happy.png',
                 '',
                 '/static/sad.png',
-                '/static/surpri.png'
+                '/static/surprise.png'
               ],//display用のエフェクト
 
                 count: 0,  //シャッター用のカウント
@@ -65,11 +65,12 @@
                 if(this.count<4){
                     //カメラが写っている範囲を指定し、その領域を画像として切り取る
                   this.canvas = document.getElementById("canvas-capture")
+                  this.canvas = this.$refs.canvas-capture
                   this.canvas_resize(this.video,this.canvas,this.canvas)
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    this.faceApi()
+                    //this.faceApi()
                     this.count++
                 }
             },
@@ -111,12 +112,12 @@
 
 
                       this.video_timer=setInterval(this.computeFrame,16)
-                        this.timer =setInterval(this.capture, 3000)
+                        //this.timer =setInterval(this.capture, 3000)
 
                         //14秒後に撮影を終了する
-                        setTimeout(this.captureStop, 14000)
+                        //setTimeout(this.captureStop, 14000)
                         //20秒後にカメラを停止する
-                        setTimeout(this.videoStop, 20000)
+                        //setTimeout(this.videoStop, 20000)
                     })
                 } else {
                     console.log("getUserMedia not support")
