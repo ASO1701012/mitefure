@@ -69,7 +69,7 @@
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    //this.faceApi()
+                    this.faceApi()
                     this.count++
                 }
             },

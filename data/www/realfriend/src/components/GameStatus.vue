@@ -4,6 +4,7 @@
       <rect width="100%" height="100%" rx="10" ry="10" stroke-width="3" class="frame-style"/>
       <text x="10" y="21" pointer-events="none" class="text-style text--white">
         {{statusMessage}}
+        {{countStart}}
       </text>
     </svg>
   </div>
@@ -14,8 +15,9 @@
         name: "GameStatus",
         data() {
             return {
-                statusMessage:"3",
+                statusMessage:null,
               countDown : 3,
+              countStart:"3",
             }
         },
         mounted() {
@@ -33,19 +35,19 @@
                 if (this.countDown==0){
                   this.countDown -= 1
                   console.log("if文には入ってる")
-                  this.statusMessage="スタート"
-                  console.log(this.statusMessage)
+                  this.countStart="スタート"
+                  console.log(this.countStart)
                   this.countDownTimer()
                 }
                 else {
                 this.countDown -= 1
-                this.statusMessage=String(this.countDown)
+                this.countStart=String(this.countDown)
                   console.log(this.countDown)
                 this.countDownTimer()
               }}, 1000)
             }
             if(this.countDown===-2){
-              this.statusMessage=null
+              this.countStart=null
             }
           },
             changeStatusMessage() {
