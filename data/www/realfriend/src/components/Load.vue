@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="img-size">
-    <img src="/static/reallogo.png">
+      <img src="/static/reallogo.png">
     </div>
-    <div class="loading loading-style">
-      <span>診</span>
-      <span>断</span>
-      <span>中</span>
-      <span>・</span>
-      <span>・</span>
-      <span>・</span>
-    </div>
+  <div class="loading loading-style">
+    <span>診</span>
+    <span>断</span>
+    <span>中</span>
+    <span>・</span>
+    <span>・</span>
+    <span>・</span>
+  </div>
   </div>
 </template>
 

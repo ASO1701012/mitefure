@@ -3,7 +3,7 @@
     <img src="/static/reallogo.png">
     <h1>REALFRIEND</h1>
     <div class="container mx-auto container-style">
-      <div class="d-inline input-style">
+      <div class="justify-content-center input-style">
 
       <NormalTextBox
         v-model="getTextBoxText"
