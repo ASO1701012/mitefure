@@ -111,7 +111,7 @@
 
 
                       this.video_timer=setInterval(this.computeFrame,16)
-                        //this.timer =setInterval(this.capture, 3000)
+                        this.timer =setInterval(this.capture, 3000)
 
                         //14秒後に撮影を終了する
                         setTimeout(this.captureStop, 14000)
