@@ -1,7 +1,14 @@
 <template>
-  <div class="follow-button">
-    <a class="twitter-follow-button" :href="url" data-size="large" target="_blank" rel="noopener">
-      結果をシェア
+  <div>
+   <a :href="url" target="_blank" class="twitter-url">
+     <div class="share-twitter">
+       <div class="share-twitter-img">
+         <img src="/static/twitter_icon.svg" alt="">
+       </div>
+       <div class="share-twitter-txt">
+         結果をシェア
+       </div>
+     </div>
     </a>
   </div>
 </template>
@@ -24,19 +31,21 @@ export default {
 </script>
 
 <style scoped>
-
-.follow-button {
-  background-color: #00b0ff;
-  width: 30vh;
-  height: 4vh;
-  margin: auto;
-  position: relative;
+.share-twitter{
+  display: flex;
+  justify-content: space-around;
 }
-.follow-button a{
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: white;
+
+.share-twitter-img{
+  width: 10vh;
+}
+
+.share-twitter-txt{
+  margin: auto;
+}
+
+.twitter-url{
+  text-decoration: none;
+  color: #00aaec;
 }
 </style>
