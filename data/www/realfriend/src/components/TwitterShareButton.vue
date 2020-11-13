@@ -1,9 +1,4 @@
 <template>
-<!--  <div>-->
-<!--   <a :href="url" target="_blank">-->
-<!--      <img src="/static/twitter_icon.svg" alt="">-->
-<!--    </a>-->
-<!--  </div>-->
   <div class="follow-button">
     <a class="twitter-follow-button" :href="url" data-size="large" target="_blank" rel="noopener">
       結果をシェア
