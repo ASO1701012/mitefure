@@ -77,7 +77,7 @@
 .text-position{
   margin: auto;padding-top: 5%;line-height: 2em;
 }
-.button-position{
-  float: right;
-}
+/*.button-position{*/
+/*  float: right;*/
+/*}*/
 </style>
