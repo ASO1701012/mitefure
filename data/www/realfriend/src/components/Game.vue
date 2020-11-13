@@ -15,6 +15,10 @@
       created() {
           window.addEventListener("beforeunload", this.confirmSave)
       },
+      mounted() {
+        setTimeout(this.$refs.camera.videoStart, 3000)
+        this.$refs.status.countDownTimer()
+      },
       destroyed() {
           window.removeEventListener("beforeunload", this.confirmSave)
       },
@@ -37,10 +41,6 @@
             event.returnValue = "本当に遷移してもよろしいですか？"
           }
       },
-      mounted() {
-        setTimeout(this.$refs.camera.videoStart, 3000)
-        this.$refs.status.countDownTimer()
-      }
 
     }
 </script>
