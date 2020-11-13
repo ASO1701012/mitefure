@@ -70,7 +70,7 @@
                 await startGame()
             }
 
-          if(this.getTextBoxText.length < 20){
+          if(this.getTextBoxText.length <= 20){
             if (this.getTextBoxText != '') {
               EXECUTE()
             } else {
