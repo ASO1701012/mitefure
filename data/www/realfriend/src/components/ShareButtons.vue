@@ -1,8 +1,8 @@
 <template>
   <div class="parent">
     <TwitterShareButton/>
-    <InstagramShareButton/>
-    <DiscordShareButton/>
+<!--    <InstagramShareButton/>-->
+<!--    <DiscordShareButton/>-->
   </div>
 </template>
 
@@ -19,9 +19,9 @@ export default {
 
 <style scoped>
 .parent {
-  display: flex;
-  width: 150px;
-  justify-content: space-around;
+  /*display: flex;*/
+  /*width: 150px;*/
+  /*justify-content: space-around;*/
 }
 
 .parent * {

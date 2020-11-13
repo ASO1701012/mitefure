@@ -1,7 +1,12 @@
 <template>
-  <div>
-   <a :href="url" target="_blank">
-      <img src="/static/twitter_icon.svg" alt="">
+<!--  <div>-->
+<!--   <a :href="url" target="_blank">-->
+<!--      <img src="/static/twitter_icon.svg" alt="">-->
+<!--    </a>-->
+<!--  </div>-->
+  <div class="follow-button">
+    <a class="twitter-follow-button" :href="url" data-size="large" target="_blank" rel="noopener">
+      Share @AsoRealFriend
     </a>
   </div>
 </template>
@@ -25,4 +30,18 @@ export default {
 
 <style scoped>
 
+.follow-button {
+  background-color: #00b0ff;
+  width: 30vh;
+  height: 4vh;
+  margin: auto;
+  position: relative;
+}
+.follow-button a{
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
 </style>
