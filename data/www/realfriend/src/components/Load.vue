@@ -230,6 +230,7 @@
     margin: 0 auto;
     /*文字の大きさ*/
     font-size: xx-large;
+    display: inline-block;
   }
 
 
