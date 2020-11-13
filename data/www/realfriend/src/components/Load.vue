@@ -1,6 +1,8 @@
 <template>
   <div>
-  <img src="/static/reallogo.png" class="img-size">
+    <div class="img-size">
+      <img src="/static/reallogo.png">
+    </div>
   <div class="loading loading-style">
     <span>診</span>
     <span>断</span>
@@ -225,6 +227,7 @@
   margin: 0 auto;
   /*文字の大きさ*/
   font-size: xx-large;
+  display: inline-block;
 }
 
 

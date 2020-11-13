@@ -1,9 +1,16 @@
 <template>
   <div>
     <svg xmlns="http://www.w3.org/2000/svg" class="svg-style">
-      <rect width="100%" height="100%" rx="10" ry="10" stroke-width="3" class="frame-style"/>
-      <text x="10" y="21" pointer-events="none" class="text-style text--white">
+      <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="orange" stop-opacity="0"/>
+        <stop offset="100%" stop-color="orange"/>
+      </linearGradient>
+
+      <rect width="100%" height="100%" rx="10" ry="10" stroke-width="3" class="frame-style" fill="url(#Gradient)"/>
+      <text x="10" y="21" pointer-events="none" class="text-style">
         {{statusMessage}}
+      </text>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" pointer-events="none" class="text-style" style="font-size:5rem">
         {{countStart}}
       </text>
     </svg>
@@ -93,11 +100,6 @@
   font-size: x-large;
   fill: white;
   word-break: break-all;
-}
-.frame-style{
-  fill: pink;
-  stroke: #ff87e0;
-  stroke-width: 3;
 }
 .svg-style{
   width: 100%;
