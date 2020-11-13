@@ -20,19 +20,18 @@
                 video: {},   //streamを保持させる
                 canvas: {},  //canvas領域
                 timer: null, //インターバル用のタイマー
-              video_timer:null,//canvas-video用のインターバルタイマー
-              effectImage:new Image,
-              landscapeImagePath : [
-                '/static/angry.png',
-                '/static/bad.png',
-                '/static/bad.png',
-                '/static/fear.png',
-                '/static/happy.png',
-                '',
-                '/static/sad.png',
-                '/static/surprise.png'
-              ],//display用のエフェクト
-
+                video_timer:null,//canvas-video用のインターバルタイマー
+                effectImage:new Image,
+                landscapeImagePath : [
+                  '/static/angry.png',
+                  '/static/bad.png',
+                  '/static/bad.png',
+                  '/static/fear.png',
+                  '/static/happy.png',
+                  '',
+                  '/static/sad.png',
+                  '/static/surprise.png'
+                ],//display用のエフェクト
                 count: 0,  //シャッター用のカウント
 
                 postUrl: 'https://abwp9ub4n8.execute-api.ap-northeast-1.amazonaws.com/realfriend/emotion',
@@ -74,7 +73,7 @@
                 }
             },
           computeFrame() {
-            this.video = this.$refs.video
+              // this.video = this.$refs.video
             this.c1 = this.$refs.canvasVideo
             this.ctx1 = this.c1.getContext("2d")
             this.canvas_resize(this.video,this.c1,this.c1)
@@ -106,17 +105,17 @@
               if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
                       this.video.srcObject = stream
-                        this.video.play()
+                      this.video.play()
                       console.log(this.canvas)
 
 
                       this.video_timer=setInterval(this.computeFrame,16)
-                        this.timer =setInterval(this.capture, 3000)
+                      this.timer =setInterval(this.capture, 3000)
 
-                        //14秒後に撮影を終了する
-                        setTimeout(this.captureStop, 14000)
-                        //20秒後にカメラを停止する
-                        setTimeout(this.videoStop, 20000)
+                      //14秒後に撮影を終了する
+                      setTimeout(this.captureStop, 14000)
+                      //20秒後にカメラを停止する
+                      setTimeout(this.videoStop, 20000)
                     })
                 } else {
                     console.log("getUserMedia not support")
@@ -125,7 +124,7 @@
             },
             captureStop() {
                 clearInterval(this.timer)
-              clearInterval(this.video_timer)
+                clearInterval(this.video_timer)
                 this.$router.push('/load')
             },
             videoStop() {

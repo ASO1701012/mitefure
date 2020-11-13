@@ -22,7 +22,7 @@
         name: "GameStatus",
         data() {
             return {
-                statusMessage:null,
+              statusMessage:null,
               countDown : 3,
               countStart:"3",
             }
