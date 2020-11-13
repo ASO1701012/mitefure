@@ -74,8 +74,10 @@
                         setTimeout(this.videoStop, 20000)
                     })
                 } else {
+                    this.$store.dispatch('Flag/changeVideoFlag')
                     console.log("getUserMedia not support")
                     alert("カメラに対応していません")
+                    this.$router.push('/')
                 }
             },
             captureStop() {
