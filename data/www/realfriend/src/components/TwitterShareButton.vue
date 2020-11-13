@@ -6,7 +6,7 @@
 <!--  </div>-->
   <div class="follow-button">
     <a class="twitter-follow-button" :href="url" data-size="large" target="_blank" rel="noopener">
-      Share @AsoRealFriend
+      結果をシェア
     </a>
   </div>
 </template>
