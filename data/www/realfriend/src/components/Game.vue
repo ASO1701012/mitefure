@@ -46,6 +46,18 @@
 </script>
 
 <style scoped>
+@media screen and (max-width: 480px) {
+  .game-style{
+    width: 100vh;
+  }
+}
+@media screen and (min-width: 481px) {
+  .game-style{
+    height: 100vh;
+  }
+}
+
+
 .camera-style{
   z-index:1;
 }
@@ -58,7 +70,6 @@
   transform: translateX(-50%);
 }
 .game-style{
-  height: 100vh;
   background-color: #000000;
 }
 </style>
