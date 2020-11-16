@@ -125,7 +125,7 @@
                 } else {
                     this.$store.dispatch('Flag/changeVideoFlag')
                     console.log("getUserMedia not support")
-                    alert("カメラに対応していません")
+                    alert("お使いのブラウザには対応していません。")
                 }
             },
             captureStop() {
