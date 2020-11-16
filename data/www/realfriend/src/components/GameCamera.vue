@@ -38,6 +38,11 @@
             }
         },
         mounted() {
+            this.$store.subscribe((mutation) => {
+                if (mutation.type === 'Flag/changeVideoFlag') {
+                    this.$router.push('/')
+                }
+            })
         },
         methods: {
             faceApi() {
@@ -121,7 +126,6 @@
                     this.$store.dispatch('Flag/changeVideoFlag')
                     console.log("getUserMedia not support")
                     alert("カメラに対応していません")
-                    this.$router.push('/')
                 }
             },
             captureStop() {
