@@ -38,6 +38,11 @@
             }
         },
         mounted() {
+            this.$store.subscribe((mutation) => {
+                if (mutation.type === 'Flag/changeVideoFlag') {
+                    this.$router.push('/')
+                }
+            })
         },
         methods: {
             faceApi() {
@@ -118,8 +123,9 @@
                       setTimeout(this.videoStop, 20000)
                     })
                 } else {
+                    this.$store.dispatch('Flag/changeVideoFlag')
                     console.log("getUserMedia not support")
-                    alert("カメラに対応していません")
+                    alert("お使いのブラウザには対応していません。")
                 }
             },
             captureStop() {
