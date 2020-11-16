@@ -15,5 +15,8 @@
 </script>
 
 <style scoped>
-
+  dd {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 </style>

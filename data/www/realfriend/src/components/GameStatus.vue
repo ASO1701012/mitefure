@@ -1,6 +1,19 @@
 <template>
   <div>
-    {{statusMessage}}
+    <svg xmlns="http://www.w3.org/2000/svg" class="svg-style">
+      <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="orange" stop-opacity="0"/>
+        <stop offset="100%" stop-color="orange"/>
+      </linearGradient>
+
+      <rect width="100%" height="100%" rx="10" ry="10" stroke-width="3" class="frame-style" fill="url(#Gradient)"/>
+      <text x="10" y="21" pointer-events="none" class="text-style">
+        {{statusMessage}}
+      </text>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" pointer-events="none" class="text-style" style="font-size:5rem">
+        {{countStart}}
+      </text>
+    </svg>
   </div>
 </template>
 
@@ -9,7 +22,9 @@
         name: "GameStatus",
         data() {
             return {
-                statusMessage:null,
+              statusMessage:null,
+              countDown : 3,
+              countStart:"3",
             }
         },
         mounted() {
@@ -20,6 +35,28 @@
             })
         },
         methods:{
+          //カウントダウン用
+          countDownTimer() {
+            if(this.countDown > -2) {
+              setTimeout(() => {
+                if (this.countDown==0){
+                  this.countDown -= 1
+                  console.log("if文には入ってる")
+                  this.countStart="スタート"
+                  console.log(this.countStart)
+                  this.countDownTimer()
+                }
+                else {
+                this.countDown -= 1
+                this.countStart=String(this.countDown)
+                  console.log(this.countDown)
+                this.countDownTimer()
+              }}, 1000)
+            }
+            if(this.countDown===-2){
+              this.countStart=null
+            }
+          },
             changeStatusMessage() {
                 let x = this.$store.getters['Favo/getMaxEmotion'] //xに最大値のキーを代入
                 let friendName = this.$store.getters['Friend/nameGet']//フレンドの名前を取得
@@ -53,11 +90,18 @@
                     this.statusMessage = "うまく感情を読み取れなかったよ"
                 }
             }
-
         }
     }
 </script>
 
 <style scoped>
 
+.text-style{
+  font-size: x-large;
+  fill: white;
+  word-break: break-all;
+}
+.svg-style{
+  width: 100%;
+}
 </style>
