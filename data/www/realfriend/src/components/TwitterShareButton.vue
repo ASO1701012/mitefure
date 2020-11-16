@@ -19,12 +19,15 @@ export default {
   data(){
     return{
       url:"",
+      point: this.$store.getters['Favo/getEmotionPoint'],
+      resultText: this.$store.getters['Favo/getResultText'],
+      friendName: this.$store.getters['Friend/nameGet']
     }
   },
   created() {
     let url = new URL("https://twitter.com/share")
     url.searchParams.set("url","https://realfriend.online/")
-    url.searchParams.set("text",this.$store.getters['Favo/getResultText'])
+    url.searchParams.set("text", this.friendName + "さんとの好感度は" + this.point + "％\n"+this.resultText)
     this.url = url
   },
 }
