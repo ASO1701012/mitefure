@@ -1,13 +1,16 @@
 <template>
   <div>
-    <ReturnButton v-if="!error" class="return-position"/>
-    <ResultRatioDisplay v-if="!error" class="ratio-position" :point="point"/>
-    <ResultHeart v-if="!error" class="heart-position" :point="point"/>
-    <ResultTextArea v-if="!error" class="text-position" :result-text="resultText"/>
-    <ShareButtons v-if="!error" class="button-position"/>
+    <ReturnButton class="return-position"/>
     <div v-if="error" class="error">
       うまく顔を認識出来ませんでした。<br>
-      顔を近づける、または、少し離すことで改善されるかも。
+      顔を近づける、または、少し離すことで改善されるかも。<br>
+      もう一度、タイトル画面からやり直してください。
+    </div>
+    <div v-else>
+      <ResultRatioDisplay class="ratio-position" :point="point"/>
+      <ResultHeart class="heart-position" :point="point"/>
+      <ResultTextArea class="text-position" :result-text="resultText"/>
+      <ShareButtons class="button-position"/>
     </div>
   </div>
 </template>
@@ -44,7 +47,6 @@
             } else {
                 next(false)
             }
-
         },
         methods: {
             confirmSave(event) {
