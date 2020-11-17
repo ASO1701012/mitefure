@@ -92,6 +92,7 @@
             //エフェクト描写処理終わり
             this.canvas_resize(this.effectImage,this.c1,this.c1)
             this.c1 = this.$refs.video
+            this.canvas_resize(this.c1)
 
 
           },
