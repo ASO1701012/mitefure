@@ -16,7 +16,7 @@
           window.addEventListener("beforeunload", this.confirmSave)
       },
       mounted() {
-        //setTimeout(this.$refs.camera.videoStart, 3000)
+        setTimeout(this.$refs.camera.videoStart, 3000)
         this.$refs.status.countDownTimer()
         let vh=window.innerHeight;
         document.getElementById('game').style.height=vh+'px';
