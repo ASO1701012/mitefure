@@ -113,7 +113,6 @@
                       this.video.play()
                       console.log(this.canvas)
 
-
                       this.video_timer=setInterval(this.computeFrame,16)
                       this.timer =setInterval(this.capture, 3000)
 
@@ -121,8 +120,14 @@
                       setTimeout(this.captureStop, 14000)
                       //20秒後にカメラを停止する
                       setTimeout(this.videoStop, 20000)
+                    }).catch(err => {
+                        //カメラが認識できなかった場合
+                        console.log(err)
+                        this.$store.dispatch('Flag/changeVideoFlag')
+                        alert("カメラが検知できませんでした。\nタイトル画面に戻ります")
                     })
                 } else {
+                    //mediaDevices.getUserMediaがブラウザに対応していない場合
                     this.$store.dispatch('Flag/changeVideoFlag')
                     console.log("getUserMedia not support")
                     alert("お使いのブラウザには対応していません。")
