@@ -1,5 +1,5 @@
 <template>
-  <div class="game-style">
+  <div class="game-style" ref="game">
     <GameCamera ref="camera" class="camera-style"></GameCamera>
     <GameStatus ref="status" class="status-style"></GameStatus>
   </div>
@@ -18,6 +18,8 @@
       mounted() {
         setTimeout(this.$refs.camera.videoStart, 3000)
         this.$refs.status.countDownTimer()
+        let vh=window.innerHeight
+        this.$refs.game.style.height=vh+'px'
       },
       destroyed() {
           window.removeEventListener("beforeunload", this.confirmSave)
@@ -43,6 +45,7 @@
 </script>
 
 <style scoped>
+
 .camera-style{
   z-index:1;
 }
@@ -55,7 +58,7 @@
   transform: translateX(-50%);
 }
 .game-style{
-  height: 100vh;
   background-color: #000000;
+  height: 100vh;
 }
 </style>
