@@ -99,7 +99,10 @@
   }
 
   .error {
-    margin-top: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
   }
 
   /*.button-position{*/
