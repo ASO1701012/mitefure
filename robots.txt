@@ -1,0 +1,6 @@
+User-agent:*
+Disallow:/#/result
+Disallow:/#/game
+Disallow:/#/load
+
+Sitemap:https://realfriend.online/sitemap.xml
