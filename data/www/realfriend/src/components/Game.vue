@@ -25,18 +25,15 @@
           window.removeEventListener("beforeunload", this.confirmSave)
       },
       beforeRouteLeave (to, from, next) {
-        if (to.name === "Load"){
-          next()
-        }else{
-          // let answer = window.confirm("このページから移動しますか？ 入力したデータは保存されません。!!!")
-          next(false)
-          // if (answer) {
-          //   next()
-          //   // location.reload()
-          // } else {
-          //   next(false)
-          // }
-        }
+          if (this.$store.getters['Flag/videoFlagGet']) {
+              if (to.name === "Load") {
+                  next()
+              } else {
+                  next(false)
+              }
+          } else {
+              next()
+          }
       },
       methods:{
           confirmSave(event){

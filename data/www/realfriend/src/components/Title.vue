@@ -45,7 +45,6 @@
     },
     methods: {
         start() {
-
             const EXECUTE = async () => {
                 const setFriendName = () => {
                     return new Promise((resolve, reject) => {
@@ -71,11 +70,17 @@
                 await startGame()
             }
 
+          if(this.getTextBoxText.length <= 10){
             if (this.getTextBoxText != '') {
-                EXECUTE()
+              EXECUTE()
             } else {
-                alert('名前を入力してください！')
+              alert('名前を入力してください！')
             }
+          } else {
+            alert('名前を10文字以内にしてください')
+          }
+
+
       }
     },
       beforeRouteLeave(to, from, next) {
