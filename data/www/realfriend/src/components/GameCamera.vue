@@ -1,12 +1,12 @@
 <template>
   <div>
-    <video style="display: none;" ref="video" width="500" height="500" playsinline="true" autoplay muted></video>
+    <video style="display: none;" ref="video" width="100" height="100" playsinline="true" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
     <div class="wrapper">
-    <canvas ref="canvasVideo" width="500" height="500"></canvas>
-    <canvas ref="canvasEffect" width="500" height="500"></canvas>
+    <canvas ref="canvasVideo" width="100" height="100"></canvas>
+    <canvas ref="canvasEffect" width="100" height="100"></canvas>
     </div>
-    <canvas ref="canvasCapture" width="500" height="500" hidden></canvas>
+    <canvas ref="canvasCapture" width="100" height="100" hidden></canvas>
   </div>
 </template>
 
@@ -68,7 +68,7 @@
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    this.faceApi()
+                    //this.faceApi()
                     this.count++
                 }
             },
