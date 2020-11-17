@@ -121,6 +121,10 @@
                       setTimeout(this.captureStop, 14000)
                       //20秒後にカメラを停止する
                       setTimeout(this.videoStop, 20000)
+                    }).catch(err => {
+                        console.log(err)
+                        this.$store.dispatch('Flag/changeVideoFlag')
+                        alert("カメラが検知できませんでした。\nタイトル画面に戻ります")
                     })
                 } else {
                     this.$store.dispatch('Flag/changeVideoFlag')
