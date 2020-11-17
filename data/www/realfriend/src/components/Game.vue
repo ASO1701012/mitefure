@@ -1,5 +1,5 @@
 <template>
-  <div class="game-style" id="game">
+  <div class="game-style" ref="game">
     <GameCamera ref="camera" class="camera-style"></GameCamera>
     <GameStatus ref="status" class="status-style"></GameStatus>
   </div>
@@ -18,8 +18,8 @@
       mounted() {
         setTimeout(this.$refs.camera.videoStart, 3000)
         this.$refs.status.countDownTimer()
-        let vh=window.innerHeight;
-        document.getElementById('game').style.height=vh+'px';
+        let vh=window.innerHeight
+        this.$refs.game.style.height=vh+'px'
       },
       destroyed() {
           window.removeEventListener("beforeunload", this.confirmSave)
@@ -45,12 +45,6 @@
 </script>
 
 <style scoped>
-@media screen and (min-width: 481px) {
-  .game-style{
-    height: 100vh;
-  }
-}
-
 
 .camera-style{
   z-index:1;
@@ -65,5 +59,6 @@
 }
 .game-style{
   background-color: #000000;
+  height: 100vh;
 }
 </style>
