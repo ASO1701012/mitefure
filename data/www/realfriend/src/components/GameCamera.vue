@@ -3,7 +3,6 @@
     <div class="wrapper">
     <video ref="video" width="100" height="100" playsinline="true" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
-    <canvas ref="canvasVideo" width="100" height="100" hidden></canvas>
     <canvas ref="canvasEffect" width="100" height="100"></canvas>
     </div>
     <canvas ref="canvasCapture" width="100" height="100" hidden></canvas>
@@ -73,15 +72,11 @@
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    //this.faceApi()
+                    this.faceApi()
                     this.count++
                 }
             },
           computeFrame() {
-              // this.video = this.$refs.video
-            this.c1 = this.$refs.canvasVideo
-            this.ctx1 = this.c1.getContext("2d")
-            this.canvas_resize(this.video,this.c1,this.c1)
             //エフェクト描写始まり（必要以上に繰り返しているので、あとでwatchでstoreを監視する方式に変えるべき）
             this.c1 = this.$refs.canvasEffect
             this.ctx1 = this.c1.getContext("2d")
@@ -91,8 +86,14 @@
             this.effectImage.src = this.landscapeImagePath[i]
             //エフェクト描写処理終わり
             this.canvas_resize(this.effectImage,this.c1,this.c1)
+
+            //
             this.c1 = this.$refs.video
-            this.canvas_resize(this.c1)
+            let theCanvas = this.c1
+            let windowInnerWidth=window.innerWidth
+            let windowInnerHeight=window.innerHeight
+            theCanvas.setAttribute('width',windowInnerWidth)
+            theCanvas.setAttribute('height',windowInnerHeight)
 
 
           },
@@ -156,7 +157,7 @@
 canvas { position: absolute; }
 video{position: absolute}
 #canvas-effect { z-index: 2; }
-#canvas-video { z-index: 1; }
+#video{z-index: 1}
 .wrapper{
   position: absolute;
 }
