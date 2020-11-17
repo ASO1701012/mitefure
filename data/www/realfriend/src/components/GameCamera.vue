@@ -1,9 +1,9 @@
 <template>
   <div>
-    <video style="display: none;" ref="video" width="100" height="100" playsinline="true" autoplay muted></video>
-    <!--    canvasを表示しないようにする-->
     <div class="wrapper">
-    <canvas ref="canvasVideo" width="100" height="100"></canvas>
+    <video ref="video" width="100" height="100" playsinline="true" autoplay muted></video>
+    <!--    canvasを表示しないようにする-->
+    <canvas ref="canvasVideo" width="100" height="100" hidden></canvas>
     <canvas ref="canvasEffect" width="100" height="100"></canvas>
     </div>
     <canvas ref="canvasCapture" width="100" height="100" hidden></canvas>
@@ -73,7 +73,7 @@
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    this.faceApi()
+                    //this.faceApi()
                     this.count++
                 }
             },
@@ -91,6 +91,8 @@
             this.effectImage.src = this.landscapeImagePath[i]
             //エフェクト描写処理終わり
             this.canvas_resize(this.effectImage,this.c1,this.c1)
+            this.c1 = this.$refs.video
+
 
           },
            canvas_resize(video_id,canvas_id,image_id){
@@ -151,6 +153,7 @@
 <style scoped>
 
 canvas { position: absolute; }
+video{position: absolute}
 #canvas-effect { z-index: 2; }
 #canvas-video { z-index: 1; }
 .wrapper{
