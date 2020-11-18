@@ -84,18 +84,7 @@
             let i=this.$store.getters["Favo/getMaxEmotion"]
             //エフェクトのサイズ確認用に入れている。
             this.effectImage.src = this.landscapeImagePath[i]
-            //エフェクト描写処理終わり
             this.canvas_resize(this.effectImage,this.c1,this.c1)
-
-            //
-            this.c1 = this.$refs.video
-            let theCanvas = this.c1
-            let windowInnerWidth=window.innerWidth
-            let windowInnerHeight=window.innerHeight
-            theCanvas.setAttribute('width',windowInnerWidth)
-            theCanvas.setAttribute('height',windowInnerHeight)
-
-
           },
            canvas_resize(video_id,canvas_id,image_id){
                //canvasとdrawImageを全画面表示する
@@ -104,6 +93,14 @@
                let windowInnerHeight=window.innerHeight
                theCanvas.setAttribute('width',windowInnerWidth)
                theCanvas.setAttribute('height',windowInnerHeight)
+
+             this.c1 = this.$refs.video
+             theCanvas = this.c1
+             windowInnerWidth=window.innerWidth
+             windowInnerHeight=window.innerHeight
+             theCanvas.setAttribute('width',windowInnerWidth)
+             theCanvas.setAttribute('height',windowInnerHeight)
+
              theCanvas = image_id
              windowInnerWidth=window.innerWidth
              windowInnerHeight=window.innerHeight
