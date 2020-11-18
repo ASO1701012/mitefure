@@ -51,8 +51,9 @@
             textGeneration: function (goods, bads, neutral) {
                 this.goodSum = this.sumScore(goods)
                 this.badSum = this.sumScore(bads)
-
-                if (neutral >= 3.5) {
+                if (this.goodSum + this.badSum === 0) {
+                    this.$store.dispatch("Favo/changeEmotionPoint", -1)
+                } else if (neutral >= 3.5) {
                     this.$store.dispatch("Favo/changeEmotionPoint", 50)
                     this.resultText = '普通の顔です'
                 } else if (this.goodSum >= this.badSum) {
