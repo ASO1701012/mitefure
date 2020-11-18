@@ -28,7 +28,7 @@
                   '/static/bad.png',
                   '/static/fear.png',
                   '/static/happy.png',
-                  '',
+                  '/static/neutral.png',
                   '/static/sad.png',
                   '/static/surprise.png'
                 ],//display用のエフェクト
@@ -88,9 +88,12 @@
             this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height)
             let i=this.$store.getters["Favo/getMaxEmotion"]
             //エフェクトのサイズ確認用に入れている。
-            this.effectImage.src = this.landscapeImagePath[i]
-            //エフェクト描写処理終わり
-            this.canvas_resize(this.effectImage,this.c1,this.c1)
+            if(i!==null){
+              this.effectImage.src = this.landscapeImagePath[i]
+              //エフェクト描写処理終わり
+              this.canvas_resize(this.effectImage,this.c1,this.c1)
+            }
+
 
           },
            canvas_resize(video_id,canvas_id,image_id){
@@ -112,7 +115,6 @@
                       this.video.srcObject = stream
                       this.video.play()
                       console.log(this.canvas)
-
                       this.video_timer=setInterval(this.computeFrame,16)
                       this.timer =setInterval(this.capture, 3000)
 
