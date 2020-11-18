@@ -1,9 +1,8 @@
 <template>
   <div>
-    <video style="display: none;" ref="video" width="100" height="100" playsinline="true" autoplay muted></video>
-    <!--    canvasを表示しないようにする-->
     <div class="wrapper">
-    <canvas ref="canvasVideo" width="100" height="100"></canvas>
+    <video ref="video" width="100" height="100" playsinline="true" autoplay muted></video>
+    <!--    canvasを表示しないようにする-->
     <canvas ref="canvasEffect" width="100" height="100"></canvas>
     </div>
     <canvas ref="canvasCapture" width="100" height="100" hidden></canvas>
@@ -78,10 +77,6 @@
                 }
             },
           computeFrame() {
-              // this.video = this.$refs.video
-            this.c1 = this.$refs.canvasVideo
-            this.ctx1 = this.c1.getContext("2d")
-            this.canvas_resize(this.video,this.c1,this.c1)
             //エフェクト描写始まり（必要以上に繰り返しているので、あとでwatchでstoreを監視する方式に変えるべき）
             this.c1 = this.$refs.canvasEffect
             this.ctx1 = this.c1.getContext("2d")
@@ -89,9 +84,7 @@
             let i=this.$store.getters["Favo/getMaxEmotion"]
             //エフェクトのサイズ確認用に入れている。
             this.effectImage.src = this.landscapeImagePath[i]
-            //エフェクト描写処理終わり
             this.canvas_resize(this.effectImage,this.c1,this.c1)
-
           },
            canvas_resize(video_id,canvas_id,image_id){
                //canvasとdrawImageを全画面表示する
@@ -100,6 +93,14 @@
                let windowInnerHeight=window.innerHeight
                theCanvas.setAttribute('width',windowInnerWidth)
                theCanvas.setAttribute('height',windowInnerHeight)
+
+             this.c1 = this.$refs.video
+             theCanvas = this.c1
+             windowInnerWidth=window.innerWidth
+             windowInnerHeight=window.innerHeight
+             theCanvas.setAttribute('width',windowInnerWidth)
+             theCanvas.setAttribute('height',windowInnerHeight)
+
              theCanvas = image_id
              windowInnerWidth=window.innerWidth
              windowInnerHeight=window.innerHeight
@@ -151,8 +152,9 @@
 <style scoped>
 
 canvas { position: absolute; }
+video{position: absolute}
 #canvas-effect { z-index: 2; }
-#canvas-video { z-index: 1; }
+#video{z-index: 1}
 .wrapper{
   position: absolute;
 }
