@@ -3,14 +3,14 @@
     <div class="img-size">
       <img src="/static/reallogo.png">
     </div>
-  <div class="loading loading-style">
-    <span>診</span>
-    <span>断</span>
-    <span>中</span>
-    <span>・</span>
-    <span>・</span>
-    <span>・</span>
-  </div>
+    <div class="loading loading-style">
+      <span>診</span>
+      <span>断</span>
+      <span>中</span>
+      <span>・</span>
+      <span>・</span>
+      <span>・</span>
+    </div>
   </div>
 </template>
 
@@ -55,7 +55,7 @@
                     this.$store.dispatch("Favo/changeEmotionPoint", -1)
                 } else if (neutral >= 3.5) {
                     this.$store.dispatch("Favo/changeEmotionPoint", 50)
-                    this.resultText = '普通の顔です'
+                    this.resultText = `${this.friendName}さんからは、何の感情も感じ取れません。\n一度、楽しい話題を振る方が良いかもしれません。\n決して、悪い感情を持っているわけではないので慎重に！`
                 } else if (this.goodSum >= this.badSum) {
                     const top_emotion = this.getTopEmotion(goods)
                     this.resultText = this.createGoodText(top_emotion)
