@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper">
-    <video ref="video" width="100" height="100" playsinline="true" autoplay muted></video>
+    <video ref="video" width="0" height="0" playsinline="true" autoplay muted></video>
     <!--    canvasを表示しないようにする-->
     <canvas ref="canvasEffect" width="100" height="100"></canvas>
     </div>
@@ -27,7 +27,7 @@
                   '/static/bad.png',
                   '/static/fear.png',
                   '/static/happy.png',
-                  '',
+                  '/static/neutral.png',
                   '/static/sad.png',
                   '/static/surprise.png'
                 ],//display用のエフェクト
@@ -83,8 +83,13 @@
             this.ctx1.clearRect(0, 0, this.canvas.width, this.canvas.height)
             let i=this.$store.getters["Favo/getMaxEmotion"]
             //エフェクトのサイズ確認用に入れている。
-            this.effectImage.src = this.landscapeImagePath[i]
-            this.canvas_resize(this.effectImage,this.c1,this.c1)
+            if(i!==null){
+              this.effectImage.src = this.landscapeImagePath[i]
+              //エフェクト描写処理終わり
+              this.canvas_resize(this.effectImage,this.c1,this.c1)
+            }
+
+
           },
            canvas_resize(video_id,canvas_id,image_id){
                //canvasとdrawImageを全画面表示する
@@ -94,20 +99,18 @@
                theCanvas.setAttribute('width',windowInnerWidth)
                theCanvas.setAttribute('height',windowInnerHeight)
 
-             this.c1 = this.$refs.video
-             theCanvas = this.c1
-             windowInnerWidth=window.innerWidth
-             windowInnerHeight=window.innerHeight
-             theCanvas.setAttribute('width',windowInnerWidth)
-             theCanvas.setAttribute('height',windowInnerHeight)
-
              theCanvas = image_id
              windowInnerWidth=window.innerWidth
              windowInnerHeight=window.innerHeight
              theCanvas.getContext("2d").drawImage(video_id, 0, 0 ,windowInnerWidth, windowInnerHeight)
                },
           videoStart() {
-                this.video = this.$refs.video
+            this.video = this.$refs.video
+            let theCanvas = this.video
+            let windowInnerWidth=window.innerWidth
+            let windowInnerHeight=window.innerHeight
+            theCanvas.setAttribute('width',windowInnerWidth)
+            theCanvas.setAttribute('height',windowInnerHeight)
               if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                   navigator.mediaDevices.getUserMedia({video: {facingMode: "environment"}}).then(stream => {
                       this.video.srcObject = stream
