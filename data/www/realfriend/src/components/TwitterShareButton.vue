@@ -26,7 +26,7 @@ export default {
   },
   created() {
     let url = new URL("https://twitter.com/share")
-    url.searchParams.set("url","https://realfriend.online/")
+    url.searchParams.set("url","https://mitefure.com/")
     url.searchParams.set("text", this.friendName + "さんとの好感度は" + this.point + "％\n"+this.resultText)
     this.url = url
   },
