@@ -1,6 +1,6 @@
 <template>
   <div class="parent">
-    <TwitterShareButton/>
+    <TwitterShareButton class="twitter-share-style"/>
 <!--    <InstagramShareButton/>-->
 <!--    <DiscordShareButton/>-->
   </div>
@@ -22,6 +22,11 @@ export default {
   /*display: flex;*/
   /*width: 150px;*/
   /*justify-content: space-around;*/
+}
+.twitter-share-style{
+  border: solid;
+  border-color: #00b0ff;
+  border-radius: 8px;
 }
 
 .parent * {

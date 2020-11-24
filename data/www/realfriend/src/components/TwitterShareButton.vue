@@ -40,7 +40,7 @@ export default {
 }
 
 .share-twitter-img{
-  width: 10vh;
+  width: 2rem;
 }
 
 .share-twitter-txt{
