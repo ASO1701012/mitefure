@@ -105,12 +105,12 @@
 
   .container-style {
     width: 100%;
-    padding-top: 5%
+    padding-top: 3%
   }
 
   .text-area-style {
     margin: auto;
-    padding-top: 5%;
+    padding-top: 3%;
     line-height: 2em;
   }
 
@@ -139,7 +139,10 @@
     width: 30vh;
     height: 4vh;
     margin: auto;
-    position: relative;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
   }
 
   .follow-button a {
