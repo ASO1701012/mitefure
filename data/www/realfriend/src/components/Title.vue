@@ -139,7 +139,10 @@
     width: 30vh;
     height: 4vh;
     margin: auto;
-    position: relative;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
   }
 
   .follow-button a {
