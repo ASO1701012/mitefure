@@ -3,4 +3,4 @@ Disallow:/#/result
 Disallow:/#/game
 Disallow:/#/load
 
-Sitemap:https://realfriend.online/sitemap.xml
+Sitemap:https://mitefure.com/sitemap.xml
