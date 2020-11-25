@@ -1,7 +1,7 @@
 <template>
   <div>
-    <img src="/static/reallogo.png">
-    <h1>REALFRIEND</h1>
+    <img src="/static/mitefure.png" class="img-style">
+    <h1>ミテフレ</h1>
     <div class="container mx-auto container-style">
       <div class="justify-content-center input-style">
 
@@ -119,7 +119,9 @@
     .text-wrap {
       width: 100%;
     }
-
+    .img-style{
+      width: 50%;
+    }
     .text-style {
       width: 50%;
       display: inline-block;
@@ -130,6 +132,9 @@
   @media screen and (min-width: 481px) {
     .text-wrap {
       width: 50%;
+    }
+    .img-style{
+      width: 20%;
     }
   }
 
