@@ -25,9 +25,9 @@
       友人や気になる人との会話で診断し、どんな感情なのか調べてみましょう！
     </NormalTextArea>
     <div class="follow-button">
-      <a class="twitter-follow-button" href="https://twitter.com/AsoRealFriend" data-size="large" target="_blank"
+      <a class="twitter-follow-button" href="https://twitter.com/Asomitefure" data-size="large" target="_blank"
          rel="noopener">
-        Follow @AsoRealFriend</a>
+        Follow @Asomitefure</a>
     </div>
   </div>
 </template>
