@@ -1,7 +1,7 @@
 <template>
   <div>
-    <img src="/static/reallogo.png">
-    <h1>REALFRIEND</h1>
+    <img src="/static/mitefure.png" class="img-style">
+    <h1>ミテフレ</h1>
     <div class="container mx-auto container-style">
       <div class="justify-content-center input-style">
 
@@ -19,15 +19,15 @@
 
 
     <NormalTextArea class="text-wrap text-area-style">
-      説明文：診断アプリ【RealFriend】は相手の表情から感情を読み取る事が出来ます。<br>
+      説明文：診断アプリ【ミテフレ】は相手の表情から感情を読み取る事が出来ます。<br>
       名前入力後、診断を押すと3秒後にカメラが起動し、感情を読み取り始めます。<br>
       15秒ほど読み取った後、感情を元に好感度をスコア化して表示します。<br>
       友人や気になる人との会話で診断し、どんな感情なのか調べてみましょう！
     </NormalTextArea>
     <div class="follow-button">
-      <a class="twitter-follow-button" href="https://twitter.com/AsoRealFriend" data-size="large" target="_blank"
+      <a class="twitter-follow-button" href="https://twitter.com/Asomitefure" data-size="large" target="_blank"
          rel="noopener">
-        Follow @AsoRealFriend</a>
+        Follow @Asomitefure</a>
     </div>
   </div>
 </template>
@@ -119,7 +119,9 @@
     .text-wrap {
       width: 100%;
     }
-
+    .img-style{
+      width: 50%;
+    }
     .text-style {
       width: 50%;
       display: inline-block;
@@ -130,6 +132,9 @@
   @media screen and (min-width: 481px) {
     .text-wrap {
       width: 50%;
+    }
+    .img-style{
+      width: 20%;
     }
   }
 
