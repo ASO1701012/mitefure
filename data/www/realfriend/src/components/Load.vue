@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="img-size">
-      <img src="/static/reallogo.png">
+      <img src="/static/mitefure.png" class="img-style">
     </div>
     <div class="loading loading-style">
       <span>診</span>
@@ -223,6 +223,18 @@
 </script>
 
 <style scoped>
+@media screen and (max-width: 480px) {
+  .img-style {
+    width: 50%;
+  }
+}
+
+/*スマホサイズでない場合に反映される*/
+@media screen and (min-width: 481px) {
+  .img-style {
+    width: 20%;
+  }
+}
 
   .loading-style {
     /*縦並びでの表示*/
