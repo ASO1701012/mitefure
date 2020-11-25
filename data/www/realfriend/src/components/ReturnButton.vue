@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <button v-on:click="resetFavoState">
+<!--buttonがbootstrapの影響で独自のCSSが反映されているので修正する。-->
+    <div v-on:click="resetFavoState">
       <img src="/static/return.svg" alt="読み取り失敗" class="return-img">
-    </button>
+    </div>
 
-  </div>
 </template>
 
 <script>
