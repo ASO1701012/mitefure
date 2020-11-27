@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="/static/mitefure.png" class="img-style">
-    <h1>ミテフレ</h1>
+    <h1>好感度診断　ミテフレ</h1>
     <div class="container mx-auto container-style">
       <div class="justify-content-center input-style">
 
@@ -144,14 +144,11 @@
     width: 30vh;
     height: 4vh;
     margin: auto;
-    position: absolute;
     bottom: 0%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);
   }
 
   .follow-button a {
-    position: absolute;
     display: block;
     width: 100%;
     height: 100%;
