@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="/static/mitefure.png" class="img-style">
-    <h1>ミテフレ</h1>
+    <h1>好感度診断　ミテフレ</h1>
     <div class="container mx-auto container-style">
       <div class="justify-content-center input-style">
 
