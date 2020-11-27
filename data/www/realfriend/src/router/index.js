@@ -6,7 +6,7 @@ import Title from "@/components/Title"
 import Result from "@/components/Result"
 import Load from "@/components/Load"
 import Game from "@/components/Game"
-
+import MiniGameLoad from "@/components/MiniGameLoad"
 import store from "@/store"
 
 Vue.use(Router)
@@ -59,6 +59,11 @@ const router = new Router({
           next()
         }
       }
+    },
+    {
+      path:'/minigameload',
+      name:'MiniGameLoad',
+      component: MiniGameLoad
     }
 
   ]
