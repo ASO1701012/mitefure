@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import counter from '@/store/modules/Counter'
-import token from '@/store/modules/Token'
-import friend from '@/store/modules/friend'
-
 Vue.use(Vuex)
+
+import Favo from "./modules/Favo"
+import Friend from "./modules/Friend"
+import Flag from "./modules/Flag"
 
 export default new Vuex.Store({
   modules: {
-    counter,
-    token,
-    friend
+    Friend,
+    Favo,
+    Flag
   },
 })
