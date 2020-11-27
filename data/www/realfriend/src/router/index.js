@@ -6,6 +6,7 @@ import Title from "@/components/Title"
 import Result from "@/components/Result"
 import Load from "@/components/Load"
 import Game from "@/components/Game"
+import MiniGame from"@/components/MiniGame"
 
 import store from "@/store"
 
@@ -59,6 +60,11 @@ const router = new Router({
           next()
         }
       }
+    },
+    {
+      path:'/minigame',
+      name:'MiniGame',
+      component: MiniGame
     }
 
   ]
