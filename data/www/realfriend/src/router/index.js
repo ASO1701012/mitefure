@@ -6,6 +6,7 @@ import Title from "@/components/Title"
 import Result from "@/components/Result"
 import Load from "@/components/Load"
 import Game from "@/components/Game"
+import Description from "@/components/Description"
 
 import store from "@/store"
 
