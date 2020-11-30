@@ -7,6 +7,7 @@ import Result from "@/components/Result"
 import Load from "@/components/Load"
 import Game from "@/components/Game"
 import Description from "@/components/Description"
+import MiniGame from"@/components/MiniGame"
 
 import store from "@/store"
 
@@ -65,8 +66,12 @@ const router = new Router({
       path:'/Description',
       name:'Description',
       component: Description,
+    },
+    {
+      path:'/minigame',
+      name:'MiniGame',
+      component: MiniGame
     }
-
 
   ]
 })
