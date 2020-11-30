@@ -64,7 +64,7 @@ const router = new Router({
       }
     },
     {
-      path:'/Description',
+      path: '/description',
       name:'Description',
       component: Description,
     },
