@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ReturnButton from "@/components/ReturnButton";
+import ReturnButton from "@/components/ReturnButton"
 export default {
 name: "Header",
   components: {ReturnButton}
