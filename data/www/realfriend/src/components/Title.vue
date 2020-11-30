@@ -24,7 +24,7 @@
       15秒ほど読み取った後、感情を元に好感度をスコア化して表示します。
       友人や気になる人との会話で診断し、どんな感情なのか調べてみましょう！
     </NormalTextArea>
-    <NormalButton  @click="nextDescription">説明画面に遷移<NormalButton>
+    <NormalButton  @click="nextDescription">説明画面に遷移</NormalButton>
     <div class="follow-button">
       <a class="twitter-follow-button" href="https://twitter.com/Asomitefure" data-size="large" target="_blank"
          rel="noopener">
@@ -90,7 +90,7 @@
           },
         },
         beforeRouteLeave(to, from, next) {
-            if (to.name === "Game") {
+            if (to.name === "Game" || to.name === "Description") {
                 next()
             } else {
                 next(false)
