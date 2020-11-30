@@ -8,8 +8,8 @@ import Load from "@/components/Load"
 import Game from "@/components/Game"
 import Description from "@/components/Description"
 import MiniGame from"@/components/MiniGame"
-
 import MiniGameLoad from "@/components/MiniGameLoad"
+import MiniGameResult from "@/components/MiniGameResult"
 import store from "@/store"
 
 Vue.use(Router)
@@ -77,6 +77,11 @@ const router = new Router({
       path:'/minigameload',
       name:'MiniGameLoad',
       component: MiniGameLoad
+    },
+    {
+      path:'/minigameresult',
+      name:'MiniGameResult',
+      component: MiniGameResult
     }
 
   ]
