@@ -67,6 +67,14 @@ const router = new Router({
       path: '/description',
       name:'Description',
       component: Description,
+
+      beforeEnter:(to, from, next) => {
+        if (from.name === 'Title'){
+          next()
+        }else{
+          next('/')
+        }
+      }
     },
     {
       path:'/minigame',
