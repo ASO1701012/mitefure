@@ -1,10 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <Header/>
+  </div>
 </template>
 
 <script>
+  import Header from "@/components/Header"
   export default {
-    name: "MiniGameResult"
+    name: "MiniGameResult",
+    components: {Header}
   }
 </script>
 
