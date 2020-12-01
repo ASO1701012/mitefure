@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header/>
     <MessageCard>
       シナリオ・・・
     </MessageCard>
@@ -11,11 +12,12 @@
 </template>
 
 <script>
+  import Header from "@/components/Header"
   import MessageCard from "./MessageCard"
 
   export default {
     name: "Description",
-    components: {MessageCard:MessageCard}
+    components: {Header,MessageCard:MessageCard}
   }
 </script>
 

@@ -54,12 +54,15 @@
               }}, 1000)
             }
             if(this.countDown===-2){
-              this.countStart=null
+              this.countStart="顔を写してください"
             }
           },
             changeStatusMessage() {
                 let x = this.$store.getters['Favo/getMaxEmotion'] //xに最大値のキーを代入
                 let friendName = this.$store.getters['Friend/nameGet']//フレンドの名前を取得
+                if(x !=null || friendName !=null){
+                  this.countStart=null
+                }
                 // this.statusMessage = this.$store.getters['Favo/getMaxEmotion']
                 if (x == 0) {
                     //anger
