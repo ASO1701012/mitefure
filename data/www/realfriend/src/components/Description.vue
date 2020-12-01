@@ -13,7 +13,7 @@
 
 <script>
   import Header from "@/components/Header"
-  import MessageCard from "./MessageCard"
+  import MessageCard from "@/components/MessageCard"
 
   export default {
     name: "Description",
