@@ -8,7 +8,7 @@
     <MessageCard>
       ミッション・・・
     </MessageCard>
-    <level-select></level-select>
+    <LevelSelect></LevelSelect>
   </div>
 </template>
 
