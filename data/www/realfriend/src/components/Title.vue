@@ -86,9 +86,16 @@
 
 
             },
-          nextDescription(){
-            this.$router.push('/description')
-          },
+            nextDescription() {
+                this.$store.dispatch('MiniGame/changeAnswer')
+            },
+        },
+        mounted() {
+            this.$store.subscribe((mutation) => {
+                if (mutation.type === 'MiniGame/changeAnswer') {
+                    this.$router.push('/description')
+                }
+            })
         },
         beforeRouteLeave(to, from, next) {
             if (to.name === "Game" || to.name === "Description") {
@@ -125,9 +132,11 @@
     .text-wrap {
       width: 100%;
     }
-    .img-style{
+
+    .img-style {
       width: 50%;
     }
+
     .text-style {
       width: 50%;
       display: inline-block;
@@ -139,7 +148,8 @@
     .text-wrap {
       width: 50%;
     }
-    .img-style{
+
+    .img-style {
       width: 20%;
     }
   }

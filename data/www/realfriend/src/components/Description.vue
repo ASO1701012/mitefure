@@ -2,25 +2,35 @@
   <div>
     <Header/>
     <MessageCard>
-      シナリオ・・・
+      {{ scenarioText }}
     </MessageCard>
     <br>
     <MessageCard>
-      ミッション・・・
+      {{ missionText }}
     </MessageCard>
-    <LevelSelect></LevelSelect>
   </div>
 </template>
 
 <script>
-  import Header from "@/components/Header"
-  import MessageCard from "@/components/MessageCard"
-  import LevelSelect from "@/components/LevelSelect"
+    import Header from "@/components/Header"
+    import MessageCard from "@/components/MessageCard"
+    import LevelSelect from "@/components/LevelSelect"
 
-  export default {
-    name: "Description",
-    components: {LevelSelect:LevelSelect, Header,MessageCard:MessageCard}
-  }
+    export default {
+        name: "Description",
+        components: {LevelSelect: LevelSelect, Header, MessageCard: MessageCard},
+        data() {
+            return {
+                scenarioText: "",
+                missionText: ""
+            }
+        },
+        created() {
+            const gameText = this.$store.getters['MiniGame/getGameText']
+            this.scenarioText = gameText[0]
+            this.missionText = gameText[1]
+        }
+    }
 </script>
 
 <style scoped>
