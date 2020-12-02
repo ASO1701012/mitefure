@@ -1,15 +1,17 @@
 <template>
   <div class="game-style" ref="game">
     <MiniGameCamera ref="camera" class="camera-style"></MiniGameCamera>
+    <MiniGameStatus ref="status" class="status-style"></MiniGameStatus>
   </div>
 </template>
 
 <script>
     import MiniGameCamera from "@/components/MiniGameCamera"
+    import MiniGameStatus from "@/components/MiniGameStatus"
 
     export default {
         name: "MiniGame",
-        components: {MiniGameCamera},
+        components: {MiniGameStatus, MiniGameCamera},
         mounted() {
             setTimeout(this.$refs.camera.videoStart, 3000)
             this.$refs.status.countDownTimer()
