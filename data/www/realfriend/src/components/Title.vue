@@ -161,17 +161,16 @@
     width: 100%;
     height: 100%;
     color: #007bff;
-    position: relative;
     border: solid;
     border-color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
   }
 
   .share-twitter-img{
     width: 1rem;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
   }
   .title-style{
     height: 100vh;
