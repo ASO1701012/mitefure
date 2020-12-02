@@ -1,5 +1,5 @@
 <template>
-  <div class="buttonback">
+  <div class="button-back">
     <button v-on:click="saveEasyLevel">易</button>
     <button v-on:click="saveNormalLevel">普</button>
     <button v-on:click="saveDifficultLevel">難</button>
@@ -16,21 +16,15 @@
       /*ストアにレベルのデータを保存*/
       saveEasyLevel() {
         this.$store.dispatch('MiniGame/changeLevel', 0)
-        setTimeout(() => {
-          this.nextMiniGame()
-        }, 100)
+        this.nextMiniGame()
       },
       saveNormalLevel() {
         this.$store.dispatch('MiniGame/changeLevel', 1)
-        setTimeout(() => {
-          this.nextMiniGame()
-        }, 100)
+        this.nextMiniGame()
       },
       saveDifficultLevel() {
         this.$store.dispatch('MiniGame/changeLevel', 2)
-        setTimeout(() => {
-          this.nextMiniGame()
-        }, 100)
+        this.nextMiniGame()
       },
 
       /*ミニゲーム画面への遷移*/
@@ -38,18 +32,12 @@
         this.$router.push('/minigame')
       },
     },
-    beforeRouteLeave(to, from, next) {
-      if (to.name === "MiniGame") {
-        next()
-      } else {
-        next(false)
-      }
-    },
+
   }
 </script>
 
 <style scoped>
-  .buttonback {
+  .button-back {
     float: right;
     max-width: 500px;
     background: #99dddd;
