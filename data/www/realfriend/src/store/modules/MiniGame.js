@@ -11,7 +11,7 @@ export default {
       ["あなたは大切な話し合いをしています。話し合いのさなか、急にお腹が痛くなりました。ですが、話し合いは盛り上がっており、抜け出しにくい状況です。", "平然を装うため、真剣な顔をキープしましょう。"],
       ["今日は、楽しい遠足の日！楽しみのあまり、準備は前日に済ませています。靴を履き、外に出ると、さっきまで晴れていたのに雨が降ってきました。。。", "あなたの悲しみを、神様に届けましょう。"],
       ["街中を歩いていると、小学校以来のSくんと鉢合わせました。また、その隣には小学校以来のAちゃんがいました。どうやら二人は結婚しているようです！", "まさかS君が！という気持ちを込め、驚いてみましょう。"],
-    ]
+    ],
     // anger: 0
     // contempt: 1
     // disgust: 2
@@ -20,7 +20,7 @@ export default {
     // neutral: 5
     // sadness: 6
     // surprise: 7
-    level:null,
+    level: null,
     //easy      :0      易
     //Normal    :1      普
     //Difficult :2      難
@@ -31,16 +31,16 @@ export default {
     },
     getGameText: (state) => {
       return state.gameText[state.answer]
-    }
-    levelGet:(state) => {
+    },
+    levelGet: (state) => {
       return state.level
     }
   },
   mutations: {
     changeAnswer: (state) => {
-      state.answer = Math.floor( Math.random() * 8 ) ;
+      state.answer = Math.floor(Math.random() * 8)
     },
-    changeLevel:(state ,payload) =>{
+    changeLevel: (state, payload) => {
       state.level = payload
     }
   },
@@ -50,7 +50,7 @@ export default {
         commit('changeAnswer')
       }, 100)
     },
-    changeLevel:({commit}, payload) =>{
+    changeLevel: ({commit}, payload) => {
       setTimeout(() => {
         commit('changeLevel', payload)
       }, 100)
