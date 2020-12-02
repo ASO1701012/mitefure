@@ -6,7 +6,10 @@ import Title from "@/components/Title"
 import Result from "@/components/Result"
 import Load from "@/components/Load"
 import Game from "@/components/Game"
-
+import Description from "@/components/Description"
+import MiniGame from"@/components/MiniGame"
+import MiniGameLoad from "@/components/MiniGameLoad"
+import MiniGameResult from "@/components/MiniGameResult"
 import store from "@/store"
 
 Vue.use(Router)
@@ -59,6 +62,34 @@ const router = new Router({
           next()
         }
       }
+    },
+    {
+      path: '/description',
+      name:'Description',
+      component: Description,
+
+      beforeEnter:(to, from, next) => {
+        if (from.name === 'Title'){
+          next()
+        }else{
+          next('/')
+        }
+      }
+    },
+    {
+      path:'/minigame',
+      name:'MiniGame',
+      component: MiniGame
+    },
+    {
+      path:'/minigameload',
+      name:'MiniGameLoad',
+      component: MiniGameLoad
+    },
+    {
+      path:'/minigameresult',
+      name:'MiniGameResult',
+      component: MiniGameResult
     }
 
   ]

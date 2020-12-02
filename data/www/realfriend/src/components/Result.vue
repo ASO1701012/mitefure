@@ -2,8 +2,8 @@
   <div>
     <ReturnButton class="return-position"/>
     <div v-if="error" class="error">
-      うまく顔を認識出来ませんでした。<br>
-      顔を近づける、または、少し離すことで改善されるかも。<br>
+      うまく顔を認識出来ませんでした。
+      顔を近づける、または、少し離すことで改善されるかも。
       もう一度、タイトル画面からやり直してください。
     </div>
     <div v-else>
