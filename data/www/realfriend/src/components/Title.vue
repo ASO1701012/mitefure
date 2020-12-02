@@ -27,7 +27,8 @@
     <div class="follow-button">
       <a class="twitter-follow-button" href="https://twitter.com/Asomitefure" data-size="large" target="_blank"
          rel="noopener">
-        Follow @Asomitefure</a>
+        <img src="/static/公式Twitter.png" class="share-twitter-img" alt="">
+        ミテフレ公式Twitter</a>
     </div>
   </div>
 </template>
@@ -140,18 +141,25 @@
 
 
   .follow-button {
-    background-color: #00b0ff;
+    background-color: white;
     width: 30vh;
     height: 4vh;
     margin: auto;
-    bottom: 0%;
-    left: 50%;
   }
 
   .follow-button a {
     display: block;
     width: 100%;
     height: 100%;
-    color: white;
+    color: #007bff;
+    border: solid;
+    border-color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .share-twitter-img{
+    width: 1rem;
   }
 </style>
