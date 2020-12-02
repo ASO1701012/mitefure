@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="textback">
+    <div class="text-back">
       <slot></slot>
     </div>
   </div>
@@ -13,7 +13,7 @@
 </script>
 
 <style scoped>
-  .textback {
+  .text-back {
     max-width:500px;
     position: relative;
     background: #99dddd;

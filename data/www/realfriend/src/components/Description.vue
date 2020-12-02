@@ -8,16 +8,18 @@
     <MessageCard>
       ミッション・・・
     </MessageCard>
+    <LevelSelect></LevelSelect>
   </div>
 </template>
 
 <script>
   import Header from "@/components/Header"
   import MessageCard from "@/components/MessageCard"
+  import LevelSelect from "@/components/LevelSelect"
 
   export default {
     name: "Description",
-    components: {Header,MessageCard:MessageCard}
+    components: {LevelSelect:LevelSelect, Header,MessageCard:MessageCard}
   }
 </script>
 
