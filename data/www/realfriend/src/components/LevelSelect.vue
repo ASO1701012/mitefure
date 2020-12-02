@@ -13,7 +13,7 @@
       return {}
     },
     methods: {
-      /*ストアにデータの保村もしくはProps*/
+      /*ストアにレベルのデータを保存*/
       saveEasyLevel() {
         this.$store.dispatch('MiniGame/changeLevel', 0)
         setTimeout(() => {
@@ -33,7 +33,7 @@
         }, 100)
       },
 
-      /*ミニゲーム破面への遷移*/
+      /*ミニゲーム画面への遷移*/
       nextMiniGame() {
         this.$router.push('/minigame')
       },
