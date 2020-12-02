@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="title-style">
     <img src="/static/mitefure.png" class="img-style">
     <h1>好感度診断　ミテフレ</h1>
     <div class="container mx-auto container-style">
@@ -24,11 +24,12 @@
       15秒ほど読み取った後、感情を元に好感度をスコア化して表示します。
       友人や気になる人との会話で診断し、どんな感情なのか調べてみましょう！
     </NormalTextArea>
-    <NormalButton  @click="nextDescription">説明画面に遷移</NormalButton>
+    <NormalButton  @click="nextDescription" class="minigame-button btn btn-outline-secondary">ミニゲーム</NormalButton>
     <div class="follow-button">
       <a class="twitter-follow-button" href="https://twitter.com/Asomitefure" data-size="large" target="_blank"
          rel="noopener">
-        Follow @Asomitefure</a>
+        <img src="/static/公式Twitter.png" class="share-twitter-img" alt="">
+        ミテフレ公式Twitter</a>
     </div>
   </div>
 </template>
@@ -85,9 +86,16 @@
 
 
             },
-          nextDescription(){
-            this.$router.push('/description')
-          },
+            nextDescription() {
+                this.$store.dispatch('MiniGame/changeAnswer')
+            },
+        },
+        mounted() {
+            this.$store.subscribe((mutation) => {
+                if (mutation.type === 'MiniGame/changeAnswer') {
+                    this.$router.push('/description')
+                }
+            })
         },
         beforeRouteLeave(to, from, next) {
             if (to.name === "Game" || to.name === "Description") {
@@ -124,9 +132,11 @@
     .text-wrap {
       width: 100%;
     }
-    .img-style{
+
+    .img-style {
       width: 50%;
     }
+
     .text-style {
       width: 50%;
       display: inline-block;
@@ -138,25 +148,41 @@
     .text-wrap {
       width: 50%;
     }
-    .img-style{
+
+    .img-style {
       width: 20%;
     }
   }
 
 
   .follow-button {
-    background-color: #00b0ff;
+    background-color: white;
     width: 30vh;
     height: 4vh;
+    position: absolute;
+    left: 0;
+    right: 0;
     margin: auto;
     bottom: 0%;
-    left: 50%;
   }
 
   .follow-button a {
     display: block;
     width: 100%;
     height: 100%;
-    color: white;
+    color: #007bff;
+    border: solid;
+    border-color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .share-twitter-img{
+    width: 1rem;
+  }
+  .title-style{
+    height: 100vh;
   }
 </style>
