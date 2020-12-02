@@ -12,13 +12,14 @@
 </template>
 
 <script>
-    import Header from "@/components/Header"
-    import MessageCard from "@/components/MessageCard"
+  import Header from "@/components/Header"
+  import MessageCard from "@/components/MessageCard"
+  import LevelSelect from "@/components/LevelSelect"
 
-    export default {
-        name: "Description",
-        components: {Header, MessageCard: MessageCard},
-        data() {
+  export default {
+    name: "Description",
+    components: {LevelSelect:LevelSelect, Header,MessageCard:MessageCard},
+       data() {
             return {
                 scenarioText: "",
                 missionText: ""
@@ -29,7 +30,7 @@
             this.scenarioText = gameText[0]
             this.missionText = gameText[1]
         }
-    }
+  }
 </script>
 
 <style scoped>

@@ -20,6 +20,10 @@ export default {
     // neutral: 5
     // sadness: 6
     // surprise: 7
+    level:null,
+    //easy      :0      易
+    //Normal    :1      普
+    //Difficult :2      難
   },
   getters: {
     answerGet: (state) => {
@@ -28,10 +32,16 @@ export default {
     getGameText: (state) => {
       return state.gameText[state.answer]
     }
+    levelGet:(state) => {
+      return state.level
+    }
   },
   mutations: {
     changeAnswer: (state) => {
-      state.answer = Math.floor(Math.random() * 8)
+      state.answer = Math.floor( Math.random() * 8 ) ;
+    },
+    changeLevel:(state ,payload) =>{
+      state.level = payload
     }
   },
   actions: {
@@ -40,5 +50,10 @@ export default {
         commit('changeAnswer')
       }, 100)
     },
+    changeLevel:({commit}, payload) =>{
+      setTimeout(() => {
+        commit('changeLevel', payload)
+      }, 100)
+    }
   }
 }
