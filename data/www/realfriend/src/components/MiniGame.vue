@@ -12,14 +12,31 @@
     export default {
         name: "MiniGame",
         components: {MiniGameStatus, MiniGameCamera},
+        created() {
+            window.addEventListener("beforeunload", this.confirmSave)
+        },
         mounted() {
             setTimeout(this.$refs.camera.videoStart, 3000)
             this.$refs.status.countDownTimer()
             let vh = window.innerHeight
             this.$refs.game.style.height = vh + 'px'
         },
-
-  }
+        destroyed() {
+            window.removeEventListener("beforeunload", this.confirmSave)
+        },
+        beforeRouteLeave(to, from, next) {
+            if (to.name === "MiniGameLoad") {
+                next()
+            } else {
+                next(false)
+            }
+        },
+        methods: {
+            confirmSave(event) {
+                event.returnValue = "本当に遷移してもよろしいですか？"
+            }
+        }
+    }
 </script>
 
 <style scoped>
