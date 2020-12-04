@@ -1,12 +1,12 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div class="mycomment">
-  <div class="button-back">
     <p>
-    <button v-on:click="saveEasyLevel">易</button>
-    <button v-on:click="saveNormalLevel">普</button>
-    <button v-on:click="saveDifficultLevel">難</button>
+      難易度
+      <br>
+    <button v-on:click="saveEasyLevel"class="btn btn-outline-dark">易</button>
+    <button v-on:click="saveNormalLevel" class="btn btn-outline-dark">普</button>
+    <button v-on:click="saveDifficultLevel" class="btn btn-outline-dark">難</button>
     </p>
-  </div>
   </div>
 </template>
 
@@ -51,7 +51,7 @@
   .mycomment p {
     display: inline-block;
     position: relative;
-    margin: 0 10px 0 0;
+    margin: 0 25px 0 0;
     padding: 8px;
     max-width: 250px;
     border-radius: 12px;
@@ -68,5 +68,8 @@
     border-left: 18px solid #edf1ee;
     -webkit-transform: rotate(-35deg);
     transform: rotate(-35deg);
+  }
+  p{
+    text-align: center;
   }
 </style>
