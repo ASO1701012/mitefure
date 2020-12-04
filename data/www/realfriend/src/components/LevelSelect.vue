@@ -1,7 +1,8 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div class="mycomment">
     <p>
-      難易度
+      難易度を選んでゲームスタート
+      <br>
       <br>
     <button v-on:click="saveEasyLevel"class="btn btn-outline-dark">易</button>
     <button v-on:click="saveNormalLevel" class="btn btn-outline-dark">普</button>
