@@ -31,6 +31,17 @@
       this.boundary = this.levelBoundary(this.level)
       this.point = this.emotionPointGet(this.answer)
       this.$store.dispatch('MiniGame/changeJudgmentResult',this.emotionalJudgment(this.point,this.boundary))
+      window.addEventListener("beforeunload", this.confirmSave)
+    },
+    destroyed() {
+      window.removeEventListener("beforeunload", this.confirmSave)
+    },
+    beforeRouteLeave(to, from, next) {
+      if (to.name === "MiniGameResult") {
+        next()
+      } else {
+        next(false)
+      }
     },
     methods:{
       levelBoundary:function (level){
@@ -73,6 +84,9 @@
           // console.log(false)
           return false
         }
+      },
+      confirmSave(event) {
+        event.returnValue = "本当に遷移してもよろしいですか？"
       },
 
     }
