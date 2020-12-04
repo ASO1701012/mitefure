@@ -26,6 +26,8 @@ name: "Header",
 }
 .header-style{
   position: relative;
+  text-align: center;
   background-color: #69ff8b;
+  top: 0%;
 }
 </style>
