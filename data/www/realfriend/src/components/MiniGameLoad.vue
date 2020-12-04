@@ -16,7 +16,25 @@
 
 <script>
   export default {
-    name: "MiniGameLoad"
+    name: "MiniGameLoad",
+    methods: {
+      confirmSave(event) {
+        event.returnValue = "本当に遷移してもよろしいですか？"
+      },
+    },
+    created() {
+      window.addEventListener("beforeunload", this.confirmSave)
+    },
+    destroyed() {
+      window.removeEventListener("beforeunload", this.confirmSave)
+    },
+    beforeRouteLeave(to, from, next) {
+      if (to.name === "MiniGameResult") {
+        next()
+      } else {
+        next(false)
+      }
+    },
   }
 </script>
 
