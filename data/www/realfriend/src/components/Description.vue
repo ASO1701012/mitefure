@@ -8,7 +8,8 @@
     <MessageCard>
       {{ missionText }}
     </MessageCard>
-    </div>
+    <LevelSelect></LevelSelect>
+  </div>
 </template>
 
 <script>
