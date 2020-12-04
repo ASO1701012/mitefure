@@ -79,7 +79,14 @@ const router = new Router({
     {
       path: '/minigame',
       name: 'MiniGame',
-      component: MiniGame
+      component: MiniGame,
+      beforeEnter: (to, from, next) => {
+        if (from.name === 'Description') {
+          next()
+        } else {
+          next('/')
+        }
+      }
     },
     {
       path: '/minigameload',
