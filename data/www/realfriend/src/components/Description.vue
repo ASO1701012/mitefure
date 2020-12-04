@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Header/>
+    <div class="line-bc">
+      <Header/>
     <MessageCard>
       {{ scenarioText }}
     </MessageCard>
@@ -35,5 +35,10 @@
 </script>
 
 <style scoped>
-
+.line-bc {
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+  height: 100vh;
+}
 </style>

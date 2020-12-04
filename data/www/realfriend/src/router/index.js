@@ -7,7 +7,7 @@ import Result from "@/components/Result"
 import Load from "@/components/Load"
 import Game from "@/components/Game"
 import Description from "@/components/Description"
-import MiniGame from "@/components/MiniGame"
+import MiniGame from"@/components/MiniGame"
 import MiniGameLoad from "@/components/MiniGameLoad"
 import MiniGameResult from "@/components/MiniGameResult"
 import store from "@/store"
@@ -36,8 +36,8 @@ const router = new Router({
       }
     },
     {
-      path: '/load',
-      name: 'Load',
+      path:'/load',
+      name:'Load',
       component: Load,
 
       //アクセスガード
@@ -65,13 +65,13 @@ const router = new Router({
     },
     {
       path: '/description',
-      name: 'Description',
+      name:'Description',
       component: Description,
 
-      beforeEnter: (to, from, next) => {
-        if (from.name === 'Title') {
+      beforeEnter:(to, from, next) => {
+        if (from.name === 'Title'){
           next()
-        } else {
+        }else{
           next('/')
         }
       }
@@ -79,7 +79,14 @@ const router = new Router({
     {
       path: '/minigame',
       name: 'MiniGame',
-      component: MiniGame
+      component: MiniGame,
+      beforeEnter: (to, from, next) => {
+        if (from.name === 'Description') {
+          next()
+        } else {
+          next('/')
+        }
+      }
     },
     {
       path: '/minigameload',
@@ -94,8 +101,8 @@ const router = new Router({
       }
     },
     {
-      path: '/minigameresult',
-      name: 'MiniGameResult',
+      path:'/minigameresult',
+      name:'MiniGameResult',
       component: MiniGameResult
     }
 
