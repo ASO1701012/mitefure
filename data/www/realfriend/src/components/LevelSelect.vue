@@ -1,8 +1,13 @@
-<template>
-  <div class="button-back">
-    <button v-on:click="saveEasyLevel">易</button>
-    <button v-on:click="saveNormalLevel">普</button>
-    <button v-on:click="saveDifficultLevel">難</button>
+<template xmlns="http://www.w3.org/1999/html">
+  <div class="mycomment">
+    <p>
+      難易度を選んでゲームスタート
+      <br>
+      <br>
+    <button v-on:click="saveEasyLevel"class="btn btn-outline-dark">易</button>
+    <button v-on:click="saveNormalLevel" class="btn btn-outline-dark">普</button>
+    <button v-on:click="saveDifficultLevel" class="btn btn-outline-dark">難</button>
+    </p>
   </div>
 </template>
 
@@ -40,6 +45,32 @@
   .button-back {
     float: right;
     max-width: 500px;
-    background: #99dddd;
+  }
+  .mycomment {
+    margin: 10px 0;
+  }
+  .mycomment p {
+    display: inline-block;
+    position: relative;
+    margin: 0 25px 0 0;
+    padding: 8px;
+    max-width: 250px;
+    border-radius: 12px;
+    background: #edf1ee;
+    font-size: 15px;
+  }
+
+  .mycomment p:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: -19px;
+    border: 8px solid transparent;
+    border-left: 18px solid #edf1ee;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+  }
+  p{
+    text-align: center;
   }
 </style>

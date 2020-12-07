@@ -2,14 +2,18 @@
   <div class="line-bc">
     <Header/>
     <MessageCard>
+      シナリオ
+      <br>
       {{ scenarioText }}
     </MessageCard>
     <br>
     <MessageCard>
+      ミッション
+      <br>
       {{ missionText }}
     </MessageCard>
     <LevelSelect></LevelSelect>
-  </div>
+    </div>
 </template>
 
 <script>
