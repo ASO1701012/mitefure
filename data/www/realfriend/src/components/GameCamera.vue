@@ -72,7 +72,7 @@
                     //画像データをbase64にエンコード
                     this.image = this.canvas.toDataURL("image/jpeg")
                     this.image = this.image.substr(23)
-                    this.faceApi()
+                    //this.faceApi()
                     this.count++
                 }
             },
@@ -140,12 +140,12 @@
             captureStop() {
                 clearInterval(this.timer)
                 clearInterval(this.video_timer)
-                this.$router.push('/load')
+                //this.$router.push('/load')
             },
             videoStop() {
                 console.log("ストップ")
                 this.video.srcObject.getTracks().forEach(track => track.stop())
-                this.$router.push('/result')
+                //this.$router.push('/result')
             }
         }
 

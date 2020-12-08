@@ -9,6 +9,7 @@
       <rect width="100%" height="100%" rx="10" ry="10" stroke-width="3" class="frame-style" fill="url(#Gradient)"/>
       <text x="10" y="21" pointer-events="none" class="text-style">
         {{statusMessage}}
+        加藤純一は最近最も乗りに乗っているのyoutuberです。
       </text>
       <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" pointer-events="none" class="text-style" style="font-size:5rem">
         {{countStart}}
