@@ -77,7 +77,6 @@
       emotionalJudgment: function (point, boundary){
         let  judgmentCondition = 4 * boundary
         // console.log(point,boundary,judgmentCondition)
-        //片方の場合のみ値を返すという処理は気持ち悪いので嫌です。
         return judgmentCondition <= point
       },
       confirmSave(event) {
