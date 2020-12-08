@@ -45,7 +45,7 @@
       window.removeEventListener("beforeunload", this.confirmSave)
     },
     beforeRouteLeave(to, from, next) {
-      if (to.name === "MiniGame") {
+      if (to.name === "MiniGame" || to.name === "Title") {
         next()
       } else {
         next(false)

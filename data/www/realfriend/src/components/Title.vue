@@ -116,21 +116,14 @@
 
 <style scoped>
 
-  .container-style {
-    width: 100%;
-    padding-top: 3%
-  }
-
-  .text-area-style {
-    margin: auto;
-    padding-top: 3%;
-    line-height: 2em;
-  }
 
   /*スマホサイズ時に反映される*/
   @media screen and (max-width: 480px) {
     .text-wrap {
       width: 100%;
+    }
+    h1{
+      font-size: 1.5rem;
     }
 
     .img-style {
@@ -140,6 +133,24 @@
     .text-style {
       width: 50%;
       display: inline-block;
+    }
+    .container-style {
+      width: 100%;
+      padding-top: 8%
+    }
+
+    .text-area-style {
+      margin: auto;
+      padding-top: 8%;
+      line-height: 2em;
+      padding-bottom: 5%;
+    }
+    .follow-button {
+      background-color: white;
+      width: 30vh;
+      height: 4vh;
+      margin: auto;
+      margin-top: 10%;
     }
   }
 
@@ -152,19 +163,26 @@
     .img-style {
       width: 20%;
     }
+    .container-style {
+      width: 100%;
+      padding-top: 2%
+    }
+
+    .text-area-style {
+      margin: auto;
+      padding-top: 2%;
+      line-height: 2em;
+    }
+    .follow-button {
+      background-color: white;
+      width: 30vh;
+      height: 4vh;
+      margin: auto;
+      margin-top: 10px;
+    }
+
   }
 
-
-  .follow-button {
-    background-color: white;
-    width: 30vh;
-    height: 4vh;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    bottom: 0%;
-  }
 
   .follow-button a {
     display: block;
