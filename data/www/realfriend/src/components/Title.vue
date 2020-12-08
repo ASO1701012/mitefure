@@ -127,6 +127,9 @@
       width: 50%;
       display: inline-block;
     }
+    h1{
+      font-size: 1.5rem;
+    }
   }
 
   /*スマホサイズでない場合に反映される*/
