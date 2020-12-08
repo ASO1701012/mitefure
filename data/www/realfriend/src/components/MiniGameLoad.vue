@@ -28,7 +28,7 @@
     created() {
       this.answer = this.$store.getters['MiniGame/answerGet']
       this.level = this.$store.getters['MiniGame/levelGet']
-      this.boundary = this.levelBoundary(this.level) * 4
+      this.boundary = this.levelBoundary(this.level)
       this.point = this.emotionPointGet(this.answer)
       this.$store.dispatch('MiniGame/changeJudgmentResult',this.emotionalJudgment(this.point,this.boundary))
       window.addEventListener("beforeunload", this.confirmSave)
@@ -75,9 +75,10 @@
         }
       },
       emotionalJudgment: function (point, boundary){
-        // let  judgmentCondition = 4 * boundary
+        let  judgmentCondition = 4 * boundary
         // console.log(point,boundary,judgmentCondition)
-        return boundary <= point;
+        //片方の場合のみ値を返すという処理は気持ち悪いので嫌です。
+        return judgmentCondition <= point
       },
       confirmSave(event) {
         event.returnValue = "本当に遷移してもよろしいですか？"
