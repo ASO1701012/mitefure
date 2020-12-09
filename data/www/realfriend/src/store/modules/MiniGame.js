@@ -35,6 +35,9 @@ export default {
     },
     levelGet: (state) => {
       return state.level
+    },
+    getJudgmentResult: (state) => {
+      return state.judgmentResult
     }
   },
   mutations: {

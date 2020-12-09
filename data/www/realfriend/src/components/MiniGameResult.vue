@@ -29,7 +29,7 @@
         methods: {
             confirmSave(event) {
                 event.returnValue = "本当に遷移してもよろしいですか？"
-            },
+            }
         },
         created() {
             const adviceText = [
@@ -42,7 +42,12 @@
                 "悲しい顔は泣いている顔をイメージすると、一番わかりやすいかと思います。眉を下げるところがポイントですよ！",
                 "コツは、目と口を大きく開けることです。友達などを驚かせてみて、その反応を真似するといいかもしれませんね！"
             ]
-            this.resultText = adviceText[0]
+            if (this.$store.getters['MiniGame/getJudgmentResult']) {
+                this.resultText = "チャレンジ成功です！この調子で表情を練習してみましょう！"
+            } else {
+                this.resultText = 'ミッション失敗です。'
+                this.resultText += adviceText[this.$store.getters['MiniGame/answerGet']]
+            }
             const gameText = this.$store.getters['MiniGame/getGameText']
             this.missionText = gameText[1]
             window.addEventListener("beforeunload", this.confirmSave)
