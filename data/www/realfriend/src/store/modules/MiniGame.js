@@ -24,6 +24,7 @@ export default {
     //easy      :0      易
     //Normal    :1      普
     //Difficult :2      難
+    judgmentResult:true
   },
   getters: {
     answerGet: (state) => {
@@ -42,6 +43,9 @@ export default {
     },
     changeLevel: (state, payload) => {
       state.level = payload
+    },
+    changeJudgmentResult:(state, payload) => {
+      state.judgmentResult = payload
     }
   },
   actions: {
@@ -54,6 +58,9 @@ export default {
       setTimeout(() => {
         commit('changeLevel', payload)
       }, 100)
+    },
+    changeJudgmentResult:({commit}, payload) => {
+      commit('changeJudgmentResult', payload)
     }
   }
 }

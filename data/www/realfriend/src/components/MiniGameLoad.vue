@@ -17,12 +17,20 @@
 <script>
   export default {
     name: "MiniGameLoad",
-    methods: {
-      confirmSave(event) {
-        event.returnValue = "本当に遷移してもよろしいですか？"
-      },
+    data() {
+      return {
+        answer:0,
+        level:0,
+        point:0,
+        boundary:0
+      }
     },
     created() {
+      this.answer = this.$store.getters['MiniGame/answerGet']
+      this.level = this.$store.getters['MiniGame/levelGet']
+      this.boundary = this.levelBoundary(this.level)
+      this.point = this.emotionPointGet(this.answer)
+      this.$store.dispatch('MiniGame/changeJudgmentResult',this.emotionalJudgment(this.point,this.boundary))
       window.addEventListener("beforeunload", this.confirmSave)
     },
     destroyed() {
@@ -35,6 +43,47 @@
         next(false)
       }
     },
+    methods:{
+      levelBoundary:function (level){
+        // console.log(level)
+        if (level === 0){
+          return 0.5
+        }else if (level === 1){
+          return 0.7
+        }else if (level === 2){
+          return 0.8
+        }
+      },
+      emotionPointGet:function (answer){
+        // console.log(answer)
+        if (answer === 0){
+          return this.$store.getters['Favo/getAnger']
+        }else if (answer === 1){
+          return this.$store.getters['Favo/getContempt']
+        }else if(answer === 2){
+          return this.$store.getters['Favo/getDisgust']
+        }else if (answer === 3){
+          return this.$store.getters['Favo/getFear']
+        }else if (answer === 4){
+          return this.$store.getters['Favo/getHappiness']
+        }else if (answer === 5){
+          return this.$store.getters['Favo/getNeutral']
+        }else if (answer === 6){
+          return this.$store.getters['Favo/getSadness']
+        }else if (answer === 7){
+          return this.$store.getters['Favo/getSurprise']
+        }
+      },
+      emotionalJudgment: function (point, boundary){
+        let  judgmentCondition = 4 * boundary
+        // console.log(point,boundary,judgmentCondition)
+        return judgmentCondition <= point
+      },
+      confirmSave(event) {
+        event.returnValue = "本当に遷移してもよろしいですか？"
+      },
+
+    }
   }
 </script>
 

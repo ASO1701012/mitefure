@@ -1,9 +1,9 @@
-<template>
-  <div class="button-back">
-    <div class="botanhuu-sikaku">
+<template xmlns="http://www.w3.org/1999/html">
+  <div class="mycomment">
+    <p>
       <!-- class名は変えてください-->
       {{levelMsg}}
-    </div>
+    </p>
   </div>
 </template>
 
@@ -39,14 +39,31 @@
 </script>
 
 <style scoped>
-  .button-back{
-    max-width:500px;
-    position: relative;
-    background: #99dddd;
-  }
-  .botanhuu-sikaku{
-    max-width:200px;
-    position: relative;
-    background: red;
-  }
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 25px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+  font-size: 15px;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #edf1ee;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+p{
+  text-align: center;
+}
 </style>
