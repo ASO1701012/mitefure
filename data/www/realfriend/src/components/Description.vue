@@ -1,5 +1,5 @@
 <template>
-  <div class="line-bc">
+  <div class="line-bc" :style="{ backgroundImage: 'url(' + backImage + ')' }">
     <Header/>
     <MessageCard>
       シナリオ
@@ -27,7 +27,8 @@
     data() {
       return {
         scenarioText: "",
-        missionText: ""
+        missionText: "",
+        backImage:"",
       }
     },
     methods: {
@@ -39,6 +40,8 @@
       const gameText = this.$store.getters['MiniGame/getGameText']
       this.scenarioText = gameText[0]
       this.missionText = gameText[1]
+      this.backImage=gameText[2]
+
       window.addEventListener("beforeunload", this.confirmSave)
     },
     destroyed() {
@@ -58,7 +61,6 @@
   .line-bc {
     text-align: right;
     font-size: 14px;
-    background: #7da4cd;
     height: 100vh;
   }
 </style>
