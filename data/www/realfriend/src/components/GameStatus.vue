@@ -1,19 +1,11 @@
 <template>
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" class="svg-style">
-      <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stop-color="orange" stop-opacity="0"/>
-        <stop offset="100%" stop-color="orange"/>
-      </linearGradient>
-
-      <rect width="100%" height="100%" rx="10" ry="10" stroke-width="3" class="frame-style" fill="url(#Gradient)"/>
-      <text x="10" y="21" pointer-events="none" class="text-style">
-        {{statusMessage}}
-      </text>
-      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" pointer-events="none" class="text-style" style="font-size:5rem">
-        {{countStart}}
-      </text>
-    </svg>
+  <div style="width:90%; height:20%;  background:linear-gradient(to bottom, rgba(255, 255, 255, 0.10), #ff7f00);border-radius:10px;">
+    <div class="text-style">
+      {{statusMessage}}
+    </div>
+    <div class="text-style" style="font-size: 4.5rem">
+      {{countStart}}
+    </div>
   </div>
 </template>
 
@@ -54,7 +46,8 @@
               }}, 1000)
             }
             if(this.countDown===-2){
-              this.countStart="顔を写してください"
+              this.countStart=null
+              this.statusMessage="顔を映してください"
             }
           },
             changeStatusMessage() {
@@ -98,13 +91,21 @@
 </script>
 
 <style scoped>
+@media screen and (min-width: 481px) {
+  .text-style{
+    font-size: 2rem;
+    color: white;
+    word-break: break-all;
+  }
 
-.text-style{
-  font-size: x-large;
-  fill: white;
-  word-break: break-all;
 }
-.svg-style{
-  width: 100%;
+@media screen and (max-width: 481px) {
+  .text-style{
+    font-size: x-large;
+    color: white;
+    word-break: break-all;
+
+  }
+
 }
 </style>
