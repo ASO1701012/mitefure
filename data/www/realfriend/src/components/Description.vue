@@ -1,5 +1,5 @@
 <template>
-  <div class="line-bc back-img" :style="{ backgroundImage: 'url(' + backImage + ')' }">
+  <div class="line-bc" :style="{ backgroundImage: 'url(' + backImage + ')' }">
     <Header/>
     <MessageCard>
       シナリオ
@@ -63,8 +63,6 @@
     font-size: 14px;
     height: 100vh;
     background-repeat: no-repeat;
-  }
-  .back-img{
     background-size: cover;
     background-position: center bottom;
   }
