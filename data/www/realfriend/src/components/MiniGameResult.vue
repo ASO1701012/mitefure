@@ -74,5 +74,7 @@
     font-size: 14px;
     height: 100vh;
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
   }
 </style>
