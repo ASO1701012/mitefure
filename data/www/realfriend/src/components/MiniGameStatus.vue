@@ -11,12 +11,12 @@
 
 <script>
     export default {
-        name: "GameStatus",
+        name: "MiniGameStatus",
         data() {
             return {
-              statusMessage:null,
-              countDown : 3,
-              countStart:"3",
+                statusMessage: null,
+                countDown: 3,
+                countStart: "3",
             }
         },
         mounted() {
@@ -26,61 +26,59 @@
                 }
             })
         },
-        methods:{
-          //カウントダウン用
-          countDownTimer() {
-            if(this.countDown > -2) {
-              setTimeout(() => {
-                if (this.countDown==0){
-                  this.countDown -= 1
-                  console.log("if文には入ってる")
-                  this.countStart="スタート"
-                  console.log(this.countStart)
-                  this.countDownTimer()
+        methods: {
+            //カウントダウン用
+            countDownTimer() {
+                if (this.countDown > -2) {
+                    setTimeout(() => {
+                        if (this.countDown == 0) {
+                            this.countDown -= 1
+                            console.log("if文には入ってる")
+                            this.countStart = "スタート"
+                            console.log(this.countStart)
+                            this.countDownTimer()
+                        } else {
+                            this.countDown -= 1
+                            this.countStart = String(this.countDown)
+                            console.log(this.countDown)
+                            this.countDownTimer()
+                        }
+                    }, 1000)
                 }
-                else {
-                this.countDown -= 1
-                this.countStart=String(this.countDown)
-                  console.log(this.countDown)
-                this.countDownTimer()
-              }}, 1000)
-            }
-            if(this.countDown===-2){
-              this.countStart=null
-              this.statusMessage="顔を映してください"
-            }
-          },
+                if (this.countDown === -2) {
+                    this.countStart = "顔を写してください"
+                }
+            },
             changeStatusMessage() {
                 let x = this.$store.getters['Favo/getMaxEmotion'] //xに最大値のキーを代入
-                let friendName = this.$store.getters['Friend/nameGet']//フレンドの名前を取得
-                if(x !=null || friendName !=null){
-                  this.countStart=null
+                if (x != null) {
+                    this.countStart = null
                 }
                 // this.statusMessage = this.$store.getters['Favo/getMaxEmotion']
                 if (x == 0) {
                     //anger
-                    this.statusMessage = friendName + "は少し怒っているかも"
+                    this.statusMessage = "あなたは少し怒っているかも"
                 } else if (x == 1) {
                     //contempt
-                    this.statusMessage = friendName + "は軽蔑な感情を抱いていそう"
+                    this.statusMessage = "あなたは軽蔑な感情を抱いていそう"
                 } else if (x == 2) {
                     //disgust
-                    this.statusMessage = friendName + "は嫌悪している"
+                    this.statusMessage = "あなたは嫌悪している"
                 } else if (x == 3) {
                     //fear
-                    this.statusMessage = friendName + "は恐れているようだ"
+                    this.statusMessage =  "あなたは恐れているようだ"
                 } else if (x == 4) {
                     //happiness
-                    this.statusMessage = friendName + "は幸せそうに会話している"
+                    this.statusMessage =  "あなたは幸せそうに会話している"
                 } else if (x == 5) {
                     //neutral
-                    this.statusMessage = friendName + "は自然体である"
+                    this.statusMessage = "あなたは自然体である"
                 } else if (x == 6) {
                     //sadness
-                    this.statusMessage = friendName + "は悲しんでいるかも"
+                    this.statusMessage = "あなたは悲しんでいるかも"
                 } else if (x == 7) {
                     //surprise
-                    this.statusMessage = friendName + "は驚いた感情を持っている"
+                    this.statusMessage =  "あなたは驚いた感情を持っている"
                 } else {
                     //予期しない値が入った場合
                     this.statusMessage = "うまく感情を読み取れなかったよ"

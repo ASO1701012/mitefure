@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="title-style">
     <img src="/static/mitefure.png" class="img-style">
     <h1>好感度診断　ミテフレ</h1>
     <div class="container mx-auto container-style">
@@ -24,6 +24,7 @@
       15秒ほど読み取った後、感情を元に好感度をスコア化して表示します。
       友人や気になる人との会話で診断し、どんな感情なのか調べてみましょう！
     </NormalTextArea>
+    <NormalButton  @click="nextDescription" class="minigame-button btn btn-outline-secondary">ミニゲーム</NormalButton>
     <div class="follow-button">
       <a class="twitter-follow-button" href="https://twitter.com/Asomitefure" data-size="large" target="_blank"
          rel="noopener">
@@ -84,10 +85,20 @@
                 }
 
 
-            }
+            },
+            nextDescription() {
+                this.$store.dispatch('MiniGame/changeAnswer')
+            },
+        },
+        mounted() {
+            this.$store.subscribe((mutation) => {
+                if (mutation.type === 'MiniGame/changeAnswer') {
+                    this.$router.push('/description')
+                }
+            })
         },
         beforeRouteLeave(to, from, next) {
-            if (to.name === "Game") {
+            if (to.name === "Game" || to.name === "Description") {
                 next()
             } else {
                 next(false)
@@ -98,37 +109,48 @@
                 //   next(false)
                 // }
             }
-        }
+        },
+
     }
 </script>
 
 <style scoped>
 
-  .container-style {
-    width: 100%;
-    padding-top: 3%
-  }
-
-  .text-area-style {
-    margin: auto;
-    padding-top: 3%;
-    line-height: 2em;
-  }
 
   /*スマホサイズ時に反映される*/
   @media screen and (max-width: 480px) {
     .text-wrap {
       width: 100%;
     }
-    .img-style{
+    h1{
+      font-size: 1.5rem;
+    }
+
+    .img-style {
       width: 50%;
     }
+
     .text-style {
       width: 50%;
       display: inline-block;
     }
-    h1{
-      font-size: 1.5rem;
+    .container-style {
+      width: 100%;
+      padding-top: 8%
+    }
+
+    .text-area-style {
+      margin: auto;
+      padding-top: 8%;
+      line-height: 2em;
+      padding-bottom: 5%;
+    }
+    .follow-button {
+      background-color: white;
+      width: 30vh;
+      height: 4vh;
+      margin: auto;
+      margin-top: 10%;
     }
   }
 
@@ -137,18 +159,30 @@
     .text-wrap {
       width: 50%;
     }
-    .img-style{
+
+    .img-style {
       width: 20%;
     }
+    .container-style {
+      width: 100%;
+      padding-top: 2%
+    }
+
+    .text-area-style {
+      margin: auto;
+      padding-top: 2%;
+      line-height: 2em;
+    }
+    .follow-button {
+      background-color: white;
+      width: 30vh;
+      height: 4vh;
+      margin: auto;
+      margin-top: 10px;
+    }
+
   }
 
-
-  .follow-button {
-    background-color: white;
-    width: 30vh;
-    height: 4vh;
-    margin: auto;
-  }
 
   .follow-button a {
     display: block;
@@ -160,9 +194,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
 
   .share-twitter-img{
     width: 1rem;
+  }
+  .title-style{
+    height: 100vh;
   }
 </style>
